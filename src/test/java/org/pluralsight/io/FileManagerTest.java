@@ -1,25 +1,30 @@
 package org.pluralsight.io;
 
 import org.junit.jupiter.api.Test;
+
+import java.io.File;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class FileManagerTest {
 
     @Test
     public void readFromFileTest() {
-        FileManager fileManager = new FileManager();
-        String breadsFile = fileManager.readFromFile("Toppings/breads.csv");
-        String resourceFile = fileManager.readFromFile("src/test/resources/testBreads.csv");
+        FileManager fileManager = new FileManager("Toppings/");
+        FileManager resourcesFileManager = new FileManager("src/test/resources/");
+
+        String breadsFile = fileManager.readFromFile("breads.csv");
+        String resourceFile = resourcesFileManager.readFromFile("testBreads.csv");
         assertEquals(breadsFile, resourceFile);
     }
 
     @Test
     public void writeFromFileTest() {
-        FileManager fileManager = new FileManager();
-        String resourceFile = fileManager.readFromFile("src/test/resources/testBreads.csv");
+        FileManager fileManager = new FileManager("src/test/resources/");
+        String resourceFile = fileManager.readFromFile("testBreads.csv");
 
-        fileManager.writeToFile("src/test/resources/copyBreads.csv", resourceFile);
-        String copyFile = fileManager.readFromFile("src/test/resources/copyBreads.csv");
+        fileManager.writeToFile("copyBreads.csv", resourceFile);
+        String copyFile = fileManager.readFromFile("copyBreads.csv");
         assertEquals(resourceFile, copyFile);
     }
 }

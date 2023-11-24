@@ -3,12 +3,17 @@ package org.pluralsight.io;
 import java.io.*;
 
 public class FileManager {
+    private final String filePath;
 
-    public String readFromFile(String filePath) {
+    public FileManager(String filePath) {
+        this.filePath = filePath;
+    }
+
+    public String readFromFile(String fileName) {
         StringBuilder stringBuilder = new StringBuilder();
 
         try {
-            BufferedReader bufferedReader = new BufferedReader(new FileReader(filePath));
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(filePath + fileName));
             String fileLine = null;
             while((fileLine = bufferedReader.readLine()) != null) {
                 stringBuilder.append(fileLine).append("\n");
@@ -21,8 +26,8 @@ public class FileManager {
         return stringBuilder.toString();
     }
 
-    public void writeToFile(String filePath, String fileContents) {
-        File file = new File(filePath);
+    public void writeToFile(String fileName, String fileContents) {
+        File file = new File(filePath + fileName);
 
         try {
             file.createNewFile();
