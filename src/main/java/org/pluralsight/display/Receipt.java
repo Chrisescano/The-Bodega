@@ -14,6 +14,11 @@ public class Receipt {
     private String timeStamp;
     private StringBuilder receiptBuilder;
 
+    public static void main(String[] args) {
+        Receipt receipt = new Receipt();
+        receipt.buildReceipt();
+    }
+
     public Receipt() {
         /*----Store Information----*/
         FileManager fileManager = new FileManager("");
@@ -32,14 +37,15 @@ public class Receipt {
 
     public void buildReceipt() {
         receiptBuilder = new StringBuilder();
-        TerminalFormat terminalFormat = new TerminalFormat();
+        TerminalFormat format = new TerminalFormat();
 
-        receiptBuilder.append(terminalFormat.centerAlign(name)).append("\n");
-        receiptBuilder.append(terminalFormat.lineDivider()).append("\n");
-        receiptBuilder.append(terminalFormat.centerAlign("phone " + phone)).append("\n");
-        receiptBuilder.append(terminalFormat.centerAlign(address1)).append("\n");
-        receiptBuilder.append(terminalFormat.centerAlign(address2)).append("\n");
-        receiptBuilder.append(terminalFormat.lineDivider());
+        receiptBuilder.append(format.divider()).append("\n");
+        receiptBuilder.append(format.tableRow(name, "center")).append("\n");
+        receiptBuilder.append(format.divider()).append("\n");
+        receiptBuilder.append(format.tableRow("phone " + phone, "center")).append("\n");
+        receiptBuilder.append(format.tableRow(address1, "center")).append("\n");
+        receiptBuilder.append(format.tableRow(address2, "center")).append("\n");
+        receiptBuilder.append(format.divider());
         System.out.println(receiptBuilder.toString());
     }
 

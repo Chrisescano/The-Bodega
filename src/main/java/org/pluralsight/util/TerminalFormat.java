@@ -6,24 +6,37 @@ public class TerminalFormat {
     private String horizontalDivider = "-";
     private String anchorDivider = "+";
 
-    public String leftAlign(String text) {
+    /*-----Common Use Methods-----*/
+    public String tableRow(String text, String padDirection) {
+        if (padDirection.equals("center")) text = padEdges(text);
+        else if (padDirection.equals("left")) text = padLeft(text);
+        else text = padRight(text);
+        return verticalDivider + " " + text + " " + verticalDivider;
+    }
+
+    public String divider() {
+        return anchorDivider + "--" + line() + anchorDivider;
+    }
+
+    /*-----Helper Methods-----*/
+    public String padRight(String text) {
         return text + " ".repeat(msgWidth - text.length());
     }
 
-    public String centerAlign(String text) {
+    public String padEdges(String text) {
         int textLength;
         if ((textLength = text.length()) >= msgWidth) return text; //no need to center
         int startingPoint = (msgWidth - textLength) / 2;
         return " ".repeat(startingPoint) + text + " ".repeat(msgWidth - startingPoint - textLength);
     }
 
-    public String rightAlign(String text) {
+    public String padLeft(String text) {
         int textLength;
         if ((textLength = text.length()) >= msgWidth) return text; //no need to center
         return " ".repeat(msgWidth - textLength) + text;
     }
 
-    public String lineDivider() {
+    public String line() {
         return horizontalDivider.repeat(msgWidth);
     }
 
