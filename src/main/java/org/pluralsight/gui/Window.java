@@ -5,16 +5,16 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Window extends JFrame {
+    WelcomeScreen welcomeScreen;
 
     public Window() {
         this.setTitle("The Deli Shop");
-        this.setSize(420, 420);
+        this.setSize(720, 480);
 
-        //ImageIcon image = new ImageIcon(/*-name of image-*/);
-        //this.setImageIcon(image.getImage());
+        welcomeScreen = new WelcomeScreen(this.getWidth(), this.getHeight());
+        this.add(welcomeScreen);
 
         this.getContentPane().setBackground(Color.gray);
-
         this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
@@ -22,6 +22,5 @@ public class Window extends JFrame {
 
     public static void main(String[] args) {
         new Window();
-
     }
 }
