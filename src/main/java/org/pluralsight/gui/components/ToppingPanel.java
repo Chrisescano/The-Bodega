@@ -12,7 +12,7 @@ public class ToppingPanel extends JPanel {
     int count;
 
     /*
-    the count parameter can be the topping class
+    might be good to make the parameter of the constructor to be a topping
      */
     public ToppingPanel(String filePath, int count) {
         image = scaleImage(filePath);
@@ -80,7 +80,7 @@ public class ToppingPanel extends JPanel {
     private void stylePlusButton() {
         plusButton = new JButton("+");
         plusButton.setBounds(panelDimensions.x + 100, panelDimensions.y + 150, 50, 25);
-        plusButton.setFont(new Font("Monospaced", Font.BOLD, minusButton.getHeight() - 3));
+        plusButton.setFont(new Font("Monospaced", Font.BOLD, plusButton.getHeight() - 3));
         plusButton.setBackground(Color.green);
         plusButton.setForeground(Color.white);
         plusButton.setFocusable(false);

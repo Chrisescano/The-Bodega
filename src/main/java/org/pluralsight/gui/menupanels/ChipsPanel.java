@@ -1,4 +1,4 @@
-package org.pluralsight.gui;
+package org.pluralsight.gui.menupanels;
 
 import javax.swing.*;
 
