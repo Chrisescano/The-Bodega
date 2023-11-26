@@ -5,22 +5,37 @@ import java.awt.*;
 
 public class OrderKiosk extends JPanel {
     JButton checkOutButton, cancelOrderButton;
-    JButton sandwichPanelButton, drinksPanelButton, chipsPanelButton;
+    JButton sandwichesPanelButton, drinksPanelButton, chipsPanelButton;
 
 
     public OrderKiosk() {
         this.setLayout(new BorderLayout());
 
+        /*--Styling--*/
         styleCheckOutButton();
         styleCancelOrderButton();
+        styleSandwichesPanelButton();
+        styleChipsPanelButton();
+        styleDrinksPanelButton();
 
-        //sub add
+        /*--Action Listeners--*/
+        checkOutButton.addActionListener(e -> System.out.println("Check out"));
+        cancelOrderButton.addActionListener(e -> System.out.println("Cancel Order"));
+
+        /*--Sub Additions--*/
         JPanel orderButtonsPanel = new JPanel();
         orderButtonsPanel.add(cancelOrderButton);
         orderButtonsPanel.add(checkOutButton);
 
-        //add
+        JPanel partsOfOrderPanel = new JPanel();
+        partsOfOrderPanel.setLayout(new GridLayout(3, 1));
+        partsOfOrderPanel.add(sandwichesPanelButton);
+        partsOfOrderPanel.add(chipsPanelButton);
+        partsOfOrderPanel.add(drinksPanelButton);
+
+        /*--Add--*/
         this.add(orderButtonsPanel, BorderLayout.SOUTH);
+        this.add(partsOfOrderPanel, BorderLayout.WEST);
     }
 
     public static void main(String[] args) {
@@ -37,6 +52,12 @@ public class OrderKiosk extends JPanel {
     }
 
     /*-----Private Methods-----*/
+    private ImageIcon scaleImage(String filePath) {
+        ImageIcon imageIcon = new ImageIcon(filePath);
+        Image image = imageIcon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+        return new ImageIcon(image);
+    }
+
     private void styleCheckOutButton() {
         checkOutButton = new JButton("Check Out");
         checkOutButton.setFont(new Font("Monospaced", Font.BOLD, 20));
@@ -51,5 +72,23 @@ public class OrderKiosk extends JPanel {
         cancelOrderButton.setBackground(Color.red);
         cancelOrderButton.setForeground(Color.white);
         cancelOrderButton.setFocusable(false);
+    }
+
+    private void styleSandwichesPanelButton() {
+        sandwichesPanelButton = new JButton(scaleImage("Media/emoji.jpg"));
+        sandwichesPanelButton.setBackground(Color.white);
+        sandwichesPanelButton.setFocusable(false);
+    }
+
+    private void styleChipsPanelButton() {
+        chipsPanelButton = new JButton(scaleImage("Media/emoji.jpg"));
+        chipsPanelButton.setBackground(Color.white);
+        chipsPanelButton.setFocusable(false);
+    }
+
+    private void styleDrinksPanelButton() {
+        drinksPanelButton = new JButton(scaleImage("Media/emoji.jpg"));
+        drinksPanelButton.setBackground(Color.white);
+        drinksPanelButton.setFocusable(false);
     }
 }

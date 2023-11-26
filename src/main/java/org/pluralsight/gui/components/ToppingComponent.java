@@ -3,7 +3,7 @@ package org.pluralsight.gui.components;
 import javax.swing.*;
 import java.awt.*;
 
-public class ToppingPanel extends JPanel {
+public class ToppingComponent extends JPanel {
     Rectangle panelDimensions;
 
     JButton plusButton, minusButton;
@@ -14,7 +14,7 @@ public class ToppingPanel extends JPanel {
     /*
     might be good to make the parameter of the constructor to be a topping
      */
-    public ToppingPanel(String filePath, int count) {
+    public ToppingComponent(String filePath, int count) {
         image = scaleImage(filePath);
         this.count = count;
 
@@ -44,7 +44,7 @@ public class ToppingPanel extends JPanel {
         frame.setTitle("Toppings Component");
         frame.setSize(400, 400);
 
-        ToppingPanel topping = new ToppingPanel("Media/emoji.jpg", 0);
+        ToppingComponent topping = new ToppingComponent("Media/emoji.jpg", 0);
         frame.add(topping);
 
         frame.getContentPane().setBackground(Color.gray);
