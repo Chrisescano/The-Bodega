@@ -36,6 +36,7 @@ public class OrderKiosk extends JPanel {
         /*--Add--*/
         this.add(orderButtonsPanel, BorderLayout.SOUTH);
         this.add(partsOfOrderPanel, BorderLayout.WEST);
+        this.add(new SandwichesPanel(), BorderLayout.CENTER);
     }
 
     public static void main(String[] args) {
