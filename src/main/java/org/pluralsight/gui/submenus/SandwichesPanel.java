@@ -1,4 +1,4 @@
-package org.pluralsight.gui.menupanels;
+package org.pluralsight.gui.submenus;
 
 import org.pluralsight.gui.components.SandwichTypeButton;
 

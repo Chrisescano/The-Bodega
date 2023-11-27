@@ -5,39 +5,26 @@ import java.awt.*;
 
 public class CustomButton extends JButton{
 
-    public CustomButton(String text) {
+    public CustomButton(String text, Color background, Color foreground) {
         this.setText(text);
         this.setFont(new Font("Monospaced", Font.BOLD, 20));
+        this.setBackground(background);
+        this.setForeground(foreground);
         setSharedStyling();
     }
 
-    public CustomButton(ImageIcon icon) {
+    public CustomButton(ImageIcon icon, Color background) {
         this.setIcon(icon);
+        this.setBackground(background);
         setSharedStyling();
     }
 
-    public CustomButton(String text, ImageIcon icon) {
+    public CustomButton(String text, ImageIcon icon, Color background, Color foreground) {
         this.setText(text);
         this.setIcon(icon);
         this.setHorizontalTextPosition(SwingConstants.CENTER);
         this.setVerticalAlignment(SwingConstants.TOP);
         setSharedStyling();
-    }
-
-    public static void main(String[] args) {
-        JFrame frame = new JFrame();
-        frame.setTitle("Toppings Component");
-        frame.setSize(720, 480);
-
-        JPanel container = new JPanel();
-        container.add(new CustomButton("Something"));
-
-        frame.add(container);
-
-        frame.getContentPane().setBackground(Color.gray);
-        frame.setResizable(false);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
     }
 
     /*-----Private Methods-----*/

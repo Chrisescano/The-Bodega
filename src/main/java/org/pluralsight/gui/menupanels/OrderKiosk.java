@@ -1,95 +1,78 @@
 package org.pluralsight.gui.menupanels;
 
+import org.pluralsight.gui.components.CustomButton;
+import org.pluralsight.gui.submenus.SandwichesPanel;
+import org.pluralsight.gui.util.IconUtil;
+import org.pluralsight.gui.util.PanelManager;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class OrderKiosk extends JPanel {
-    JButton checkOutButton, cancelOrderButton;
-    JButton sandwichesPanelButton, drinksPanelButton, chipsPanelButton;
+    //JFrame frame;
+    CustomButton checkOutButton, cancelOrderButton;
+    CustomButton sandwichesButton, drinksButton, chipsButton;
 
 
     public OrderKiosk() {
+        //this.frame = frame;
         this.setLayout(new BorderLayout());
 
         /*--Styling--*/
-        styleCheckOutButton();
-        styleCancelOrderButton();
-        styleSandwichesPanelButton();
-        styleChipsPanelButton();
-        styleDrinksPanelButton();
+        checkOutButton = new CustomButton("Check Out", Color.white, Color.black);
+        cancelOrderButton = new CustomButton("Cancel Order", Color.red, Color.white);
+        sandwichesButton = new CustomButton(IconUtil.scale("Media/emoji.jpg", 100, 100), Color.white);
+        chipsButton = new CustomButton(IconUtil.scale("Media/emoji.jpg", 100, 100), Color.white);
+        drinksButton = new CustomButton(IconUtil.scale("Media/emoji.jpg", 100, 100), Color.white);
 
-        /*--Action Listeners--*/
-        checkOutButton.addActionListener(e -> System.out.println("Check out"));
-        cancelOrderButton.addActionListener(e -> System.out.println("Cancel Order"));
+        sandwichesButton.setEnabled(false);
+        checkOutButton.setEnabled(false);
 
         /*--Sub Additions--*/
         JPanel orderButtonsPanel = new JPanel();
         orderButtonsPanel.add(cancelOrderButton);
         orderButtonsPanel.add(checkOutButton);
 
-        JPanel partsOfOrderPanel = new JPanel();
-        partsOfOrderPanel.setLayout(new GridLayout(3, 1));
-        partsOfOrderPanel.add(sandwichesPanelButton);
-        partsOfOrderPanel.add(chipsPanelButton);
-        partsOfOrderPanel.add(drinksPanelButton);
+        JPanel subMenuPanel = new JPanel();
+        subMenuPanel.setLayout(new GridLayout(3, 1));
+        subMenuPanel.add(sandwichesButton);
+        subMenuPanel.add(chipsButton);
+        subMenuPanel.add(drinksButton);
 
         /*--Add--*/
         this.add(orderButtonsPanel, BorderLayout.SOUTH);
-        this.add(partsOfOrderPanel, BorderLayout.WEST);
+        this.add(subMenuPanel, BorderLayout.WEST);
         this.add(new SandwichesPanel(), BorderLayout.CENTER);
-    }
 
-    public static void main(String[] args) {
-        JFrame frame = new JFrame();
-        frame.setTitle("Toppings Component");
-        frame.setSize(720, 480);
-
-        frame.add(new OrderKiosk());
-
-        frame.getContentPane().setBackground(Color.gray);
-        frame.setResizable(false);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
+        implementActionListeners();
     }
 
     /*-----Private Methods-----*/
-    private ImageIcon scaleImage(String filePath) {
-        ImageIcon imageIcon = new ImageIcon(filePath);
-        Image image = imageIcon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
-        return new ImageIcon(image);
-    }
+    private void implementActionListeners() {
+        checkOutButton.addActionListener(e -> {
 
-    private void styleCheckOutButton() {
-        checkOutButton = new JButton("Check Out");
-        checkOutButton.setFont(new Font("Monospaced", Font.BOLD, 20));
-        checkOutButton.setBackground(Color.white);
-        checkOutButton.setForeground(Color.black);
-        checkOutButton.setFocusable(false);
-    }
+        });
 
-    private void styleCancelOrderButton() {
-        cancelOrderButton = new JButton("Cancel Order");
-        cancelOrderButton.setFont(new Font("Monospaced", Font.BOLD, 20));
-        cancelOrderButton.setBackground(Color.red);
-        cancelOrderButton.setForeground(Color.white);
-        cancelOrderButton.setFocusable(false);
-    }
+        cancelOrderButton.addActionListener(e -> {
+            PanelManager.swap(PanelManager.getPanel(0));
+        });
 
-    private void styleSandwichesPanelButton() {
-        sandwichesPanelButton = new JButton(scaleImage("Media/emoji.jpg"));
-        sandwichesPanelButton.setBackground(Color.white);
-        sandwichesPanelButton.setFocusable(false);
-    }
+        sandwichesButton.addActionListener(e -> {
+            sandwichesButton.setEnabled(false);
+            chipsButton.setEnabled(true);
+            drinksButton.setEnabled(true);
+        });
 
-    private void styleChipsPanelButton() {
-        chipsPanelButton = new JButton(scaleImage("Media/emoji.jpg"));
-        chipsPanelButton.setBackground(Color.white);
-        chipsPanelButton.setFocusable(false);
-    }
+        chipsButton.addActionListener(e -> {
+            sandwichesButton.setEnabled(true);
+            chipsButton.setEnabled(false);
+            drinksButton.setEnabled(true);
+        });
 
-    private void styleDrinksPanelButton() {
-        drinksPanelButton = new JButton(scaleImage("Media/emoji.jpg"));
-        drinksPanelButton.setBackground(Color.white);
-        drinksPanelButton.setFocusable(false);
+        drinksButton.addActionListener(e -> {
+            sandwichesButton.setEnabled(true);
+            chipsButton.setEnabled(true);
+            drinksButton.setEnabled(false);
+        });
     }
 }
