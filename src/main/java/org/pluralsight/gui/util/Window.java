@@ -7,7 +7,7 @@ public class Window extends JFrame {
 
     public Window() {
         this.setTitle("The Deli Shop");
-        this.setSize(720, 480);
+        this.setSize(720, 480); //800, 600 is better
 
         this.getContentPane().setBackground(Color.gray);
         this.setResizable(false);
