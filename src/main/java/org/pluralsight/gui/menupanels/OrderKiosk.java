@@ -1,7 +1,7 @@
 package org.pluralsight.gui.menupanels;
 
 import org.pluralsight.gui.components.CustomButton;
-import org.pluralsight.gui.submenus.SandwichesPanel;
+import org.pluralsight.gui.submenus.SubMenuPanel;
 import org.pluralsight.gui.util.IconUtil;
 import org.pluralsight.gui.util.PanelManager;
 
@@ -13,7 +13,10 @@ public class OrderKiosk extends JPanel {
     CustomButton checkOutButton, cancelOrderButton;
     CustomButton sandwichesButton, drinksButton, chipsButton;
 
-
+/*
+Todo:
+- change isEnabled icon image for sub menus
+ */
     public OrderKiosk() {
         //this.frame = frame;
         this.setLayout(new BorderLayout());
@@ -33,16 +36,16 @@ public class OrderKiosk extends JPanel {
         orderButtonsPanel.add(cancelOrderButton);
         orderButtonsPanel.add(checkOutButton);
 
-        JPanel subMenuPanel = new JPanel();
-        subMenuPanel.setLayout(new GridLayout(3, 1));
-        subMenuPanel.add(sandwichesButton);
-        subMenuPanel.add(chipsButton);
-        subMenuPanel.add(drinksButton);
+        JPanel subMenusPanel = new JPanel();
+        subMenusPanel.setLayout(new GridLayout(3, 1));
+        subMenusPanel.add(sandwichesButton);
+        subMenusPanel.add(chipsButton);
+        subMenusPanel.add(drinksButton);
 
         /*--Add--*/
         this.add(orderButtonsPanel, BorderLayout.SOUTH);
-        this.add(subMenuPanel, BorderLayout.WEST);
-        this.add(new SandwichesPanel(), BorderLayout.CENTER);
+        this.add(subMenusPanel, BorderLayout.WEST);
+        this.add(new SubMenuPanel("Sandwiches",3), BorderLayout.CENTER);
 
         implementActionListeners();
     }
@@ -53,9 +56,7 @@ public class OrderKiosk extends JPanel {
 
         });
 
-        cancelOrderButton.addActionListener(e -> {
-            PanelManager.swap(PanelManager.getPanel(0));
-        });
+        cancelOrderButton.addActionListener(e -> PanelManager.swap(PanelManager.getPanel(0)));
 
         sandwichesButton.addActionListener(e -> {
             sandwichesButton.setEnabled(false);
