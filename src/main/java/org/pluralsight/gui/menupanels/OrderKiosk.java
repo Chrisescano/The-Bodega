@@ -9,17 +9,23 @@ import javax.swing.*;
 import java.awt.*;
 
 public class OrderKiosk extends JPanel {
-    //JFrame frame;
     CustomButton checkOutButton, cancelOrderButton;
     CustomButton sandwichesButton, drinksButton, chipsButton;
+    CardLayout cardLayout;
+    JPanel cardPanel;
 
 /*
 Todo:
 - change isEnabled icon image for sub menus
  */
     public OrderKiosk() {
-        //this.frame = frame;
         this.setLayout(new BorderLayout());
+
+        cardLayout = new CardLayout();
+        cardPanel = new JPanel(cardLayout);
+        cardPanel.add(new SubMenuPanel("Sandwiches", 5), "sandwiches");
+        cardPanel.add(new SubMenuPanel("Chips", 2), "chips");
+        cardPanel.add(new SubMenuPanel("Drinks", 1), "drinks");
 
         /*--Styling--*/
         checkOutButton = new CustomButton("Check Out", Color.white, Color.black);
@@ -28,7 +34,6 @@ Todo:
         chipsButton = new CustomButton(IconUtil.scale("Media/emoji.jpg", 100, 100), Color.white);
         drinksButton = new CustomButton(IconUtil.scale("Media/emoji.jpg", 100, 100), Color.white);
 
-        sandwichesButton.setEnabled(false);
         checkOutButton.setEnabled(false);
 
         /*--Sub Additions--*/
@@ -36,16 +41,16 @@ Todo:
         orderButtonsPanel.add(cancelOrderButton);
         orderButtonsPanel.add(checkOutButton);
 
-        JPanel subMenusPanel = new JPanel();
-        subMenusPanel.setLayout(new GridLayout(3, 1));
-        subMenusPanel.add(sandwichesButton);
-        subMenusPanel.add(chipsButton);
-        subMenusPanel.add(drinksButton);
+        JPanel menuButtonContainer = new JPanel();
+        menuButtonContainer.setLayout(new GridLayout(3, 1));
+        menuButtonContainer.add(sandwichesButton);
+        menuButtonContainer.add(chipsButton);
+        menuButtonContainer.add(drinksButton);
 
         /*--Add--*/
         this.add(orderButtonsPanel, BorderLayout.SOUTH);
-        this.add(subMenusPanel, BorderLayout.WEST);
-        this.add(new SubMenuPanel("Sandwiches",3), BorderLayout.CENTER);
+        this.add(menuButtonContainer, BorderLayout.WEST);
+        this.add(cardPanel, BorderLayout.CENTER);
 
         implementActionListeners();
     }
@@ -62,18 +67,24 @@ Todo:
             sandwichesButton.setEnabled(false);
             chipsButton.setEnabled(true);
             drinksButton.setEnabled(true);
+
+            cardLayout.show(cardPanel, "sandwiches");
         });
 
         chipsButton.addActionListener(e -> {
             sandwichesButton.setEnabled(true);
             chipsButton.setEnabled(false);
             drinksButton.setEnabled(true);
+
+            cardLayout.show(cardPanel, "chips");
         });
 
         drinksButton.addActionListener(e -> {
             sandwichesButton.setEnabled(true);
             chipsButton.setEnabled(true);
             drinksButton.setEnabled(false);
+
+            cardLayout.show(cardPanel, "drinks");
         });
     }
 }

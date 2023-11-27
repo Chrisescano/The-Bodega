@@ -2,6 +2,7 @@ package org.pluralsight.gui.util;
 
 import org.pluralsight.gui.menupanels.WelcomeScreen;
 import org.pluralsight.gui.menupanels.OrderKiosk;
+import org.pluralsight.gui.submenus.SubMenuPanel;
 
 import javax.swing.*;
 
@@ -19,6 +20,11 @@ public class PanelManager {
 
     public static void swap(JPanel newPanel) {
         window.setContentPane(newPanel);
+        window.invalidate();
+        window.validate();
+    }
+
+    public static void repaint() {
         window.invalidate();
         window.validate();
     }

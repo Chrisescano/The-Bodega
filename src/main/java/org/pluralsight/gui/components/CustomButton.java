@@ -23,7 +23,9 @@ public class CustomButton extends JButton{
         this.setText(text);
         this.setIcon(icon);
         this.setHorizontalTextPosition(SwingConstants.CENTER);
-        this.setVerticalAlignment(SwingConstants.TOP);
+        this.setVerticalTextPosition(SwingConstants.TOP);
+        this.setBackground(background);
+        this.setForeground(foreground);
         setSharedStyling();
     }
 
