@@ -21,11 +21,12 @@ Todo:
     public OrderKiosk() {
         this.setLayout(new BorderLayout());
 
+        /*--Card Layout For Easy Switching--*/
         cardLayout = new CardLayout();
         cardPanel = new JPanel(cardLayout);
-        cardPanel.add(new SubMenuPanel("Sandwiches", 5), "sandwiches");
-        cardPanel.add(new SubMenuPanel("Chips", 2), "chips");
-        cardPanel.add(new SubMenuPanel("Drinks", 1), "drinks");
+        cardPanel.add(new JScrollPane(new SubMenuPanel("Sandwiches", 20)), "sandwiches");
+        cardPanel.add(new JScrollPane(new SubMenuPanel("Chips", 2)), "chips");
+        cardPanel.add(new JScrollPane(new SubMenuPanel("Drinks", 1)), "drinks");
 
         /*--Styling--*/
         checkOutButton = new CustomButton("Check Out", Color.white, Color.black);

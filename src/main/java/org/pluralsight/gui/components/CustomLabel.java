@@ -10,10 +10,12 @@ public class CustomLabel extends JLabel{
         this.setFont(new Font("Monospaced", Font.BOLD, 20));
         this.setBackground(background);
         this.setForeground(foreground);
+        this.setHorizontalAlignment(SwingConstants.CENTER);
     }
 
-    public CustomLabel(ImageIcon icon) {
+    public CustomLabel(ImageIcon icon, Color background) {
         this.setIcon(icon);
+        this.setBackground(background);
     }
 
     public CustomLabel(String text, ImageIcon icon) {

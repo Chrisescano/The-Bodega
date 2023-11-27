@@ -26,7 +26,7 @@ public class WelcomeScreen extends JPanel implements ActionListener {
         this.setLayout(new BorderLayout());
 
         //styling
-        storeLogoLabel = new CustomLabel(IconUtil.scale("Media/emoji.jpg", 720, 480));
+        storeLogoLabel = new CustomLabel(IconUtil.scale("Media/emoji.jpg", 720, 480), Color.white);
         newOrderButton = new CustomButton("New Order", Color.green, Color.white);
 
         //sub adding
