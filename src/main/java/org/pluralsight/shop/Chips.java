@@ -1,4 +1,4 @@
 package org.pluralsight.shop;
 
-public class Order {
+public class Chips {
 }
