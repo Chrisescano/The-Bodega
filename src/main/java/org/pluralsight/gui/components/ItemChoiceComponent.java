@@ -5,11 +5,11 @@ import org.pluralsight.gui.util.IconUtil;
 import javax.swing.*;
 import java.awt.*;
 
-public class ToppingComponent extends JPanel {
+public class ItemChoiceComponent extends JPanel {
     CustomLabel countLabel;
     int count;
 
-    public ToppingComponent() {
+    public ItemChoiceComponent() {
         this.setLayout(new GridBagLayout());
         this.setPreferredSize(new Dimension(120, 150));
 
@@ -25,7 +25,8 @@ public class ToppingComponent extends JPanel {
         gbc.gridheight = 3;
         gbc.weightx = 1.0;
         gbc.weighty = 1.0;
-        this.add(new CustomLabel(IconUtil.scale("Media/emoji.jpg", 120,120), Color.white), gbc);
+        this.add(new CustomLabel("Item", IconUtil.scale("Media/emoji.jpg", 120,120),
+                Color.white, Color.black), gbc);
 
         gbc.gridx = 0;
         gbc.gridy = 3;
@@ -36,7 +37,7 @@ public class ToppingComponent extends JPanel {
         CustomButton minusButton = new CustomButton("-", Color.red, Color.white);
         this.add(minusButton, gbc);
         minusButton.addActionListener(e -> {
-            if(count == 0) return;
+            if(count == 0) return; //lower limit
             count--;
             countLabel.setText(String.valueOf(count));
         });
@@ -50,7 +51,7 @@ public class ToppingComponent extends JPanel {
         CustomButton plusButton = new CustomButton("+", Color.green, Color.white);
         this.add(plusButton, gbc);
         plusButton.addActionListener(e -> {
-            if(count == 99) return;
+            if(count == 5) return; //upper limit
             count++;
             countLabel.setText(String.valueOf(count));
         });
@@ -62,7 +63,7 @@ public class ToppingComponent extends JPanel {
         frame.setSize(720, 480);
 
         frame.setLayout(new FlowLayout());
-        frame.add(new ToppingComponent());
+        frame.add(new ItemChoiceComponent());
 
         frame.getContentPane().setBackground(Color.gray);
         frame.setResizable(false);
