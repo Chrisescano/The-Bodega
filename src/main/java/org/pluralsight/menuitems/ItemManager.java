@@ -5,14 +5,13 @@ import org.pluralsight.io.FileManager;
 import java.util.ArrayList;
 
 public class ItemManager {
-    FileManager fileManager;
-    ArrayList<Item> itemList = new ArrayList<>();
-    boolean isPremium;
+    private final ArrayList<Item> itemList = new ArrayList<>();
+    private final boolean isPremium;
 
     public ItemManager(String fileName, boolean isPremium) {
         this.isPremium = isPremium;
 
-        fileManager = new FileManager("MenuItems/");
+        FileManager fileManager = new FileManager("MenuItems/");
         String fileContents = fileManager.readFromFile(fileName);
         String[] menuItems = fileContents.split("\n");
 

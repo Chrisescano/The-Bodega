@@ -16,9 +16,9 @@ public class PremiumItem extends Item {
         itemPrices.put(Size.MEDIUM, Double.valueOf(itemParts[2]));
         itemPrices.put(Size.LARGE, Double.valueOf(itemParts[3]));
 
-        extraPrices.put(Size.SMALL, Double.valueOf(itemParts[3]));
-        extraPrices.put(Size.MEDIUM, Double.valueOf(itemParts[3]));
-        extraPrices.put(Size.LARGE, Double.valueOf(itemParts[3]));
+        extraPrices.put(Size.SMALL, Double.valueOf(itemParts[4]));
+        extraPrices.put(Size.MEDIUM, Double.valueOf(itemParts[5]));
+        extraPrices.put(Size.LARGE, Double.valueOf(itemParts[6]));
     }
 
     /*-----Getters-----*/
