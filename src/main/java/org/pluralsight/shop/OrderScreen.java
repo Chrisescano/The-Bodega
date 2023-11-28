@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class OrderScreen {
 
-    public void displayOrderScreen() {
+    protected void displayOrderScreen() {
 
         Scanner scanner = new Scanner(System.in);
 
