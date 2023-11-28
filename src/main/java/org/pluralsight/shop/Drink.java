@@ -1,7 +1,7 @@
 package org.pluralsight.shop;
 
 
-import org.pluralsight.io.ScannerIO;
+
 import org.pluralsight.menuitems.Item;
 import org.pluralsight.menuitems.ItemManager;
 import java.util.ArrayList;
