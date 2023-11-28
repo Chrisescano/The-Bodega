@@ -3,19 +3,16 @@ package org.pluralsight.shop;
 import org.pluralsight.menuitems.Item;
 import org.pluralsight.menuitems.ItemManager;
 
+import java.util.ArrayList;
+
 public class Chips {
-    ItemManager chipItems;
+    ArrayList<Item> chips;
+
+    public static void main(String[] args) {
+        Chips chips = new Chips();
+    }
 
     public Chips() {
-        chipItems = new ItemManager("chips.csv", false);
+        chips = new ItemManager("chips.csv", false).getItemList();
     }
-
-    public void order(String itemName) {
-        for (Item chip : chipItems.getItemList()) {
-            if (chip.getItemName().equals(itemName)) chip.orderItem();
-        }
-    }
-
-    /*-----Getters-----*/
-
 }
