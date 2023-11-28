@@ -1,10 +1,16 @@
 package org.pluralsight.display;
 
+import org.pluralsight.menuitems.Item;
+import org.pluralsight.shop.Sandwich;
+import org.pluralsight.shop.Size;
+
+import java.util.ArrayList;
+
 public class SandwichScreen implements Displayable{
-    //sandwich object
+    Sandwich sandwich;
 
     SandwichScreen() {
-        //initialize sandwich object
+        sandwich = new Sandwich();
     }
 
     @Override
@@ -19,54 +25,37 @@ public class SandwichScreen implements Displayable{
     public void run() {
         display();
         while (true) {
-            //code here for a new sandwich object
-            sandwichBreadPrompt();
+            sandwichItemPrompt("Here Are The Different Breads We Have:", sandwich.getBreadToppings());
             sandwichSizePrompt();
-            sandwichMeatPrompt();
-            sandwichCheesePrompt();
-            sandwichRegularPrompt();
-            sandwichSaucePrompt();
-            sandwichSidePrompt();
-            sandwichToastPrompt();
-
-            break; //temporary, remove when done
+            sandwichItemPrompt("Here Are The Different Meats We Have:", sandwich.getMeatToppings());
+            sandwichItemPrompt("Here Are The Different Cheeses We Have:", sandwich.getCheeseToppings());
+            sandwichItemPrompt("Here Are The Different Regular Toppings We Have:", sandwich.getRegularToppings());
+            sandwichItemPrompt("Here Are The Different Sauces We Have:", sandwich.getSauceToppings());
+            sandwichItemPrompt("Here Are The Different Sides We Have:", sandwich.getSideToppings());
+            break;
         }
     }
 
-    private void sandwichBreadPrompt() {
-        //ask user what kind of bread
-        //show user bread options
-        //user selects bread
-        //add bread type to sandwich
+    /*-----Private Methods-----*/
 
-        //this template can be followed for almost all methods in sandwich screen
+    private void sandwichItemPrompt(String prompt, ArrayList<Item> items) {
+        System.out.println(prompt);
+        for (Item item : items) item.toTerminal();
     }
 
     private void sandwichSizePrompt() {
-
-    }
-
-    private void sandwichMeatPrompt() {
-
-    }
-
-    private void sandwichCheesePrompt() {
-
-    }
-
-    private void sandwichRegularPrompt() {
-
-    }
-
-    private void sandwichSaucePrompt() {
-
-    }
-
-    private void sandwichSidePrompt() {
-
+        System.out.println("Here Are The Different Bread Sizes We Have: ");
+        for (Size size : Size.values()) System.out.println(size);
     }
 
     private void sandwichToastPrompt() {
-
+        //boolean userInput = ScannerIO.getBooleanInput("Would You Like Your Sandwich Toasted? (yes or no)");
+        //add toasting sandwich boolean to sandwich
     }
+
+    /*-----Getters-----*/
+    public Sandwich getSandwich() {
+        return sandwich;
+    }
+
 }
