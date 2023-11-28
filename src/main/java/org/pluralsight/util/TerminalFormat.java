@@ -1,7 +1,7 @@
 package org.pluralsight.util;
 
 public class TerminalFormat {
-    private int msgWidth = 30;
+    private int msgWidth = 40;
     private String verticalDivider = "|";
     private String horizontalDivider = "-";
     private String anchorDivider = "+";
@@ -12,6 +12,11 @@ public class TerminalFormat {
         else if (padDirection.equals("left")) text = padLeft(text);
         else text = padRight(text);
         return verticalDivider + " " + text + " " + verticalDivider;
+    }
+
+    public String tableRow(String front, String back, String padDirection) {
+        if (padDirection.equals("between")) front = padInBetween(front, back);
+        return verticalDivider + " " + front + " " + verticalDivider;
     }
 
     public String divider() {
@@ -34,6 +39,14 @@ public class TerminalFormat {
         int textLength;
         if ((textLength = text.length()) >= msgWidth) return text; //no need to center
         return " ".repeat(msgWidth - textLength) + text;
+    }
+
+    public String padInBetween(String frontText, String backText) {
+        int frontLength = frontText.length();
+        int backLength = backText.length();
+        if(frontLength + backLength >= msgWidth) return frontText + backText;
+        int amountOfPadding = msgWidth - backLength - frontLength;
+        return frontText + " ".repeat(amountOfPadding) + backText;
     }
 
     public String line() {
