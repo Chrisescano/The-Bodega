@@ -1,12 +1,19 @@
 # The-Bodega
-DESCRIPTION: The Bodega Project is a point of sales application in which Users would be able to customize their own sandwich orders. It comes with multiple screens ranging from the Home Screen, Order Screen, Checkout,etc which displays several features that show the process of getting an order completed. The user will be able to pick from a few options for their sandwiches along with their preferred toppings and premium toppings if they wanted to be extra. The app 
+## Point of sales application in which Users would be able to customize their own sandwich orders.
 
+This application serves as a way of implementing Object Oriented Analysis and OOP concepts in designing an app that includes classes and interfaces to show how it'll progress as a project that helps someone manage orders for a business and to convert their operation to making salles. The project shows sample code including the following:
 
-APPLICATION FEATURES:
-  Add Sandwich,
-  Regular & Premium toppings,
-  Add extras(Chips & Drink),
-  Checkout
+*Takes users inputs of Sandwich orders and customize to their liking 
+*Adding both regular and premium toppings along with sides (chips and drink) due to the customers preference
+*Creation of a UML diagram showcasing the application features
+*Classes that list features of sandwich orders
+*Receipts folder with order details from customers
 
-  
-Get Started: To get started with the application 
+# Take a look at the UML diagram displaying the whole application system : https://github.com/Chrisescano/The-Bodega/blob/lizata-branch/ClassDiagram/Capstone_2_class_diagram.pdf
+
+## Found a bug ?
+If you happen to find a bug in this project  or a simple improvement you think would benefit, feel free to submit a pull request
+
+## Clone the project for your own
+
+## How to work on this project fo your own uses:
