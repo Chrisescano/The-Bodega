@@ -20,6 +20,6 @@ public class RegularItem extends Item{
 
     @Override
     public double getPrice(Size breadSize) {
-        return itemPrices.get(breadSize);
+        return isOrdered ? itemPrices.get(breadSize) : 0;
     }
 }
