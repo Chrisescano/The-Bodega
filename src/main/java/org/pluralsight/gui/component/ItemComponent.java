@@ -133,21 +133,4 @@ public class ItemComponent extends JPanel{
     public boolean isSelected() {
         return isSelected;
     }
-
-    public static void main(String[] args) {
-        JFrame frame = new JFrame();
-        frame.setTitle("The Deli Shop");
-        frame.setSize(800, 600); //800, 600 is better
-
-        frame.setLayout(new FlowLayout());
-        ItemComponent itemComponent = new ItemComponent(
-                "Media/emoji.jpg","Wheat", false, "Regular"
-        );
-        frame.add(itemComponent);
-
-        frame.getContentPane().setBackground(Color.gray);
-        frame.setResizable(false);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
-    }
 }
