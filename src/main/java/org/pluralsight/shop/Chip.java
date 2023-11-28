@@ -5,14 +5,14 @@ import org.pluralsight.menuitems.ItemManager;
 
 import java.util.ArrayList;
 
-public class Chips {
+public class Chip {
     ArrayList<Item> chips;
 
     public static void main(String[] args) {
-        Chips chips = new Chips();
+        Chip chips = new Chip();
     }
 
-    public Chips() {
+    public Chip() {
         chips = new ItemManager("chips.csv", false).getItemList();
     }
 }

@@ -15,4 +15,6 @@ public abstract class Item {
 
     public abstract String getItemName();
     public abstract double getPrice(Size breadSize);
+
+    public abstract void toTerminal();
 }
