@@ -1,4 +1,4 @@
-package org.pluralsight.display;
+package org.pluralsight.shop;
 
 import org.pluralsight.io.FileManager;
 import org.pluralsight.util.TerminalFormat;

@@ -2,6 +2,7 @@ package org.pluralsight.display;
 
 import org.junit.jupiter.api.Test;
 import org.pluralsight.io.FileManager;
+import org.pluralsight.shop.Receipt;
 
 import static org.junit.jupiter.api.Assertions.*;
 
