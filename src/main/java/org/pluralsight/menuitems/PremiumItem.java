@@ -39,7 +39,7 @@ public class PremiumItem extends Item {
 
     @Override
     public double getPrice(Size breadSize) {
-        return !isOrdered ? 0 : extraOrdered ? itemPrices.get(breadSize) + extraPrices.get(breadSize) :
+        return extraOrdered ? itemPrices.get(breadSize) + extraPrices.get(breadSize) :
                 itemPrices.get(breadSize);
     }
 

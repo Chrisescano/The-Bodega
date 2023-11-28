@@ -1,18 +1,8 @@
 package org.pluralsight.display;
 
 import org.pluralsight.io.ScannerIO;
-import org.pluralsight.shop.Chip;
-import org.pluralsight.shop.Drink;
-import org.pluralsight.shop.Sandwich;
-
-import java.util.ArrayList;
 
 public class OrderScreen implements Displayable {
-    private final ArrayList<Sandwich> sandwiches = new ArrayList<>();
-    private final ArrayList<Drink> drinks = new ArrayList<Drink>();
-    private final ArrayList<Chip> chips = new ArrayList<>();
-
-
     private void addSandwich() {
         System.out.println("Displaying addSandwich method \n");
     }
