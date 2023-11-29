@@ -22,7 +22,9 @@ public class Orderkiosk extends JPanel {
 
         CardLayout menuCardLayout = new CardLayout();
         JPanel menuCardPanel = new JPanel(menuCardLayout);
-        menuCardPanel.add(new JScrollPane(new SanwichMenu()), "SandwichMenu");
+
+        //put back SandwichMenu when done testing
+        menuCardPanel.add(new JScrollPane(new SandwichItemPanel()), "SandwichMenu");
 
         //these buttons will stay for the duration of the program life cycle
         menuButtonConstraints = new GridBagConstraints();
