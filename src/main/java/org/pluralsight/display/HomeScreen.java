@@ -15,7 +15,6 @@ public class HomeScreen implements Displayable {
                 Would You Like To:
                   (1) - Make A New Order
                   (0) - Quit The Program
-                  
                 """);
     }
 

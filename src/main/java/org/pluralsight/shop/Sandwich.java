@@ -9,7 +9,8 @@ public class Sandwich {
     private final ItemManager breadTypeIM, cheeseIM, meatIM, regularIM, sauceIM, sideIM;
     private final ArrayList<Item> sandwichItems;
     private Size breadSize;
-    private boolean isToasted;
+    private boolean isToasted = false;
+    private double price = 0;
 
     public Sandwich() {
         breadTypeIM = new ItemManager("breads.csv", false);
@@ -25,6 +26,7 @@ public class Sandwich {
         for(Item bread : breadTypeIM.getItemList()) {
             if (bread.getItemName().equalsIgnoreCase(itemName)) {
                 sandwichItems.add(bread);
+                price += bread.getPrice(breadSize);
                 return 0;
             }
         }
@@ -35,6 +37,7 @@ public class Sandwich {
         for (Item meat : meatIM.getItemList()) {
             if (meat.getItemName().equalsIgnoreCase(itemName)) {
                 sandwichItems.add(meat);
+                price += meat.getPrice(breadSize);
                 return 0;
             }
         }
@@ -45,6 +48,7 @@ public class Sandwich {
         for (Item cheese : cheeseIM.getItemList()) {
             if (cheese.getItemName().equalsIgnoreCase(itemName)) {
                 sandwichItems.add(cheese);
+                price += cheese.getPrice(breadSize);
                 return 0;
             }
         }
@@ -55,6 +59,7 @@ public class Sandwich {
         for (Item regular : regularIM.getItemList()) {
             if (regular.getItemName().equalsIgnoreCase(itemName)) {
                 sandwichItems.add(regular);
+                price += regular.getPrice(breadSize);
                 return 0;
             }
         }
@@ -65,6 +70,7 @@ public class Sandwich {
         for (Item sauce : sauceIM.getItemList()) {
             if (sauce.getItemName().equalsIgnoreCase(itemName)) {
                 sandwichItems.add(sauce);
+                price += sauce.getPrice(breadSize);
                 return 0;
             }
         }
@@ -75,6 +81,7 @@ public class Sandwich {
         for (Item side : sideIM.getItemList()) {
             if (side.getItemName().equalsIgnoreCase(itemName)) {
                 sandwichItems.add(side);
+                price += side.getPrice(breadSize);
                 return 0;
             }
         }
@@ -108,6 +115,22 @@ public class Sandwich {
 
     public ArrayList<Item> getSideToppings() {
         return sideIM.getItemList();
+    }
+
+    public ArrayList<Item> getSandwichItems() {
+        return sandwichItems;
+    }
+
+    public Size getBreadSize() {
+        return breadSize;
+    }
+
+    public boolean isToasted() {
+        return isToasted;
+    }
+
+    public double getPrice() {
+        return price;
     }
 
     /*-----Setters-----*/
