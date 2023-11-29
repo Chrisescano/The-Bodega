@@ -1,18 +1,13 @@
 package org.pluralsight.display;
 
 import org.pluralsight.io.ScannerIO;
+import org.pluralsight.shop.Order;
 
 public class OrderScreen implements Displayable {
-    private void addSandwich() {
-        System.out.println("Displaying addSandwich method \n");
-    }
+    Order order;
 
-    private void addDrink() {
-        System.out.println("Displaying addDrink method \n");
-    }
-
-    private void addChips() {
-        System.out.println("Displaying addChips method \n");
+    public OrderScreen() {
+        order = new Order();
     }
 
     private void checkout() {
@@ -33,7 +28,6 @@ public class OrderScreen implements Displayable {
                   (3) - Add Chips
                   (4) - Checkout
                   (0) - Cancel Order
-                  
                 """);
     }
 
@@ -44,12 +38,16 @@ public class OrderScreen implements Displayable {
             int userInput = ScannerIO.getIntInput("Enter Your Command: ");
             switch (userInput) {
                 case 1 -> {
-                    SandwichScreen sandwichScreen = new SandwichScreen();
+                    SandwichScreen sandwichScreen = new SandwichScreen(order);
                     sandwichScreen.run();
                 }
                 case 2 -> System.out.println("Order A Drink");
                 case 3 -> System.out.println("Order A Chip");
-                case 4 -> System.out.println("Checkout");
+                case 4 -> {
+                    CheckoutScreen checkoutScreen = new CheckoutScreen(order);
+                    checkoutScreen.run();
+                    return;
+                }
                 case 0 -> { return; }
                 default -> System.out.println("Sorry, "+ userInput +" Is Not A Valid Command. Try Again");
             }
