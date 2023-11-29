@@ -25,7 +25,6 @@ public class Drink {
 
       //  ArrayList<Item> drinkOptions = itemManager.getItemList();
         for (int i = 0; i < itemManager.getItemList().size(); i++) {
-            itemManager.getItemList().get(i).orderItem();
             System.out.println(itemManager.getItemList().get(i).getItemName());
             System.out.println("   Small: $" + itemManager.getItemList().get(i).getPrice(Size.SMALL));
             System.out.println("   Meduim: $" + itemManager.getItemList().get(i).getPrice(Size.MEDIUM));

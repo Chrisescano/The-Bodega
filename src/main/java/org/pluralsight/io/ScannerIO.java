@@ -15,7 +15,9 @@ public class ScannerIO {
         while (true) {
             System.out.print(prompt);
             try {
-                return scanner.nextInt();
+                int userInput = scanner.nextInt();
+                scanner.nextLine(); //clear buffer
+                return userInput;
             } catch (IllegalArgumentException e) {
                 System.out.println("Oops, Expecting An Integer Input. Try Again");
             }
