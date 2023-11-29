@@ -3,34 +3,55 @@ package org.pluralsight.shop;
 
 import org.pluralsight.menuitems.Item;
 import org.pluralsight.menuitems.ItemManager;
+
 import java.util.ArrayList;
 
 
 public class Drink {
-    public static void main(String[] args) {
 
+    private final ArrayList<Item> drinks;
+
+    public static void main(String[] args) {
         Drink drink = new Drink();
         drink.selectedDrink();
     }
-    private final ItemManager itemManager;
-    private Item selectedDrink;
+
+
+    public final ArrayList<Item> getDrinks() {
+        return drinks;
+    }
 
     public Drink() {
-        this.itemManager = new ItemManager("drinks.csv", false);
+        drinks = new ItemManager("drinks.csv", false).getItemList();
     }
 
 
     public void selectedDrink() {
-
-      //  ArrayList<Item> drinkOptions = itemManager.getItemList();
-        for (int i = 0; i < itemManager.getItemList().size(); i++) {
-            System.out.println(itemManager.getItemList().get(i).getItemName());
-            System.out.println("   Small: $" + itemManager.getItemList().get(i).getPrice(Size.SMALL));
-            System.out.println("   Meduim: $" + itemManager.getItemList().get(i).getPrice(Size.MEDIUM));
-            System.out.println("   Large: $" + itemManager.getItemList().get(i).getPrice(Size.LARGE));
-
+        System.out.println("Drinks List:");
+        for (Item drink : drinks) {
+            System.out.println(drink.getItemName());
+            System.out.println("   Small: $" + drink.getPrice(Size.SMALL));
+            System.out.println("   Medium: $" + drink.getPrice(Size.MEDIUM));
+            System.out.println("   Large: $" + drink.getPrice(Size.LARGE));
         }
+
     }
+
+
+    public int addDrink(String flavor) {
+        for (Item drink : drinks) {
+            if (drink.getItemName().equalsIgnoreCase(flavor)) {
+                drinks.add(drink);
+                System.out.println("added" + flavor);
+        
+
+                return 0;
+            }
+        }
+        return 1;
+    }
+
+
 
     //Adding addToOrder method
 
