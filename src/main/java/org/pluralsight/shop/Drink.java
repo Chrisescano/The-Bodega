@@ -12,8 +12,7 @@ public class Drink {
         Drink drink = new Drink();
         drink.selectedDrink();
     }
-
-    private ItemManager itemManager;
+    private final ItemManager itemManager;
     private Item selectedDrink;
 
     public Drink() {
@@ -34,6 +33,7 @@ public class Drink {
     }
 
     //Adding addToOrder method
+
   
 }
 
