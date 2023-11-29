@@ -16,9 +16,15 @@ public class PremiumItem extends Item {
         itemPrices.put(Size.MEDIUM, Double.valueOf(itemParts[2]));
         itemPrices.put(Size.LARGE, Double.valueOf(itemParts[3]));
 
-        extraPrices.put(Size.SMALL, Double.valueOf(itemParts[3]));
-        extraPrices.put(Size.MEDIUM, Double.valueOf(itemParts[3]));
-        extraPrices.put(Size.LARGE, Double.valueOf(itemParts[3]));
+        extraPrices.put(Size.SMALL, Double.valueOf(itemParts[4]));
+        extraPrices.put(Size.MEDIUM, Double.valueOf(itemParts[5]));
+        extraPrices.put(Size.LARGE, Double.valueOf(itemParts[6]));
+    }
+
+    @Override
+    public void toTerminal() {
+        System.out.printf("%s $%.2f $%.2f $%.2f\n", itemName,
+                getPrice(Size.SMALL), getPrice(Size.MEDIUM), getPrice(Size.LARGE));
     }
 
     /*-----Getters-----*/
@@ -33,7 +39,7 @@ public class PremiumItem extends Item {
 
     @Override
     public double getPrice(Size breadSize) {
-        return extraOrdered ? itemPrices.get(breadSize) + extraPrices.get(breadSize) :
+        return !isOrdered ? 0 : extraOrdered ? itemPrices.get(breadSize) + extraPrices.get(breadSize) :
                 itemPrices.get(breadSize);
     }
 

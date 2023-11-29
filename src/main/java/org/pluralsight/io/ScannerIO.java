@@ -21,4 +21,15 @@ public class ScannerIO {
             }
         }
     }
+
+    public static boolean getBooleanInput(String prompt) {
+        while (true) {
+            String userInput = getStringInput(prompt).toUpperCase();
+            switch (userInput) {
+                case "YES", "Y", "TRUE", "T" -> { return true; }
+                case "NO", "N", "FALSE", "F" -> { return false; }
+                default -> System.out.println("Oops, Expecting Yes Or No. Try Again");
+            }
+        }
+    }
 }

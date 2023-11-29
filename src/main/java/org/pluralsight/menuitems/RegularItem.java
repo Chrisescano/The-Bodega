@@ -12,6 +12,12 @@ public class RegularItem extends Item{
         itemPrices.put(Size.LARGE, Double.valueOf(itemParts[3]));
     }
 
+    @Override
+    public void toTerminal() {
+        System.out.printf("%s $%.2f $%.2f $%.2f\n", itemName,
+                getPrice(Size.SMALL), getPrice(Size.MEDIUM), getPrice(Size.LARGE));
+    }
+
     /*-----Getters-----*/
     @Override
     public String getItemName() {
@@ -20,6 +26,6 @@ public class RegularItem extends Item{
 
     @Override
     public double getPrice(Size breadSize) {
-        return itemPrices.get(breadSize);
+        return isOrdered ? itemPrices.get(breadSize) : 0;
     }
 }
