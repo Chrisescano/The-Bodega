@@ -16,6 +16,7 @@ public class Drink {
         drink.selectedDrink();
     }
 
+
     public final ArrayList<Item> getDrinks() {
         return drinks;
     }
@@ -36,11 +37,13 @@ public class Drink {
 
     }
 
+
     public int addDrink(String flavor) {
         for (Item drink : drinks) {
             if (drink.getItemName().equalsIgnoreCase(flavor)) {
                 drinks.add(drink);
                 System.out.println("added" + flavor);
+        
 
                 return 0;
             }
@@ -49,6 +52,10 @@ public class Drink {
     }
 
 
+
+    //Adding addToOrder method
+
+  
 }
 
 

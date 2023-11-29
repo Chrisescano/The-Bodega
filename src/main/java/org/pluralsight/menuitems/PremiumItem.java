@@ -21,6 +21,12 @@ public class PremiumItem extends Item {
         extraPrices.put(Size.LARGE, Double.valueOf(itemParts[6]));
     }
 
+    @Override
+    public void toTerminal() {
+        System.out.printf("%s $%.2f $%.2f $%.2f\n", itemName,
+                getPrice(Size.SMALL), getPrice(Size.MEDIUM), getPrice(Size.LARGE));
+    }
+
     /*-----Getters-----*/
     public boolean isExtraOrdered() {
         return extraOrdered;
@@ -33,7 +39,7 @@ public class PremiumItem extends Item {
 
     @Override
     public double getPrice(Size breadSize) {
-        return !isOrdered ? 0 : extraOrdered ? itemPrices.get(breadSize) + extraPrices.get(breadSize) :
+        return extraOrdered ? itemPrices.get(breadSize) + extraPrices.get(breadSize) :
                 itemPrices.get(breadSize);
     }
 
