@@ -6,7 +6,7 @@ import org.pluralsight.menuitems.ItemManager;
 import java.util.ArrayList;
 
 public class Chip {
-    ArrayList<Item> chips;
+    private final ArrayList<Item> chips;
 
     public static void main(String[] args) {
         Chip chips = new Chip();
@@ -17,7 +17,7 @@ public class Chip {
         chips = new ItemManager("chips.csv", false).getItemList();
     }
 
-    public ArrayList<Item> getChips() {
+    public final ArrayList<Item> getChips() {
         return chips;
     }
 
@@ -31,6 +31,7 @@ public class Chip {
     public int addChips(String itemName) {
         for (Item chip : chips) {
             if (chip.getItemName().equalsIgnoreCase(itemName)) {
+                chips.add(chip);
                 return 0;
             }
         }
