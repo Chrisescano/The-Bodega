@@ -7,8 +7,9 @@ import java.util.ArrayList;
 
 public class Sandwich {
     private final ItemManager breadTypeIM, cheeseIM, meatIM, regularIM, sauceIM, sideIM;
-    private ArrayList<Item> sandwichItems;
+    private final ArrayList<Item> sandwichItems;
     private Size breadSize;
+    private boolean isToasted;
 
     public Sandwich() {
         breadTypeIM = new ItemManager("breads.csv", false);
@@ -18,6 +19,16 @@ public class Sandwich {
         sauceIM = new ItemManager("sauces.csv", false);
         sideIM = new ItemManager("sides.csv", false);
         sandwichItems = new ArrayList<>();
+    }
+
+    public int addBread(String itemName) {
+        for(Item bread : breadTypeIM.getItemList()) {
+            if (bread.getItemName().equalsIgnoreCase(itemName)) {
+                sandwichItems.add(bread);
+                return 0;
+            }
+        }
+        return -1;
     }
 
     public int addMeat(String itemName) {
@@ -97,5 +108,14 @@ public class Sandwich {
 
     public ArrayList<Item> getSideToppings() {
         return sideIM.getItemList();
+    }
+
+    /*-----Setters-----*/
+    public void setBreadSize(Size breadSize) {
+        this.breadSize = breadSize;
+    }
+
+    public void setIsToasted(boolean isToasted) {
+        this.isToasted = isToasted;
     }
 }

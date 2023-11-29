@@ -1,4 +1,4 @@
-package org.pluralsight.display;
+package org.pluralsight.shop;
 
 import org.junit.jupiter.api.Test;
 import org.pluralsight.io.FileManager;
