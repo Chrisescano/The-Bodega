@@ -6,31 +6,42 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Orderkiosk extends JPanel {
-    private final JButton sandwichMenuButton = new JButton();
-    private final JButton drinkMenuButton = new JButton();
-    private final JButton chipMenuButton = new JButton();
-    private final JButton cancelOrderButton = new JButton();
-    private final JButton checkoutButton = new JButton();
-    private final JPanel menuButtonsContainer = new JPanel(new GridBagLayout());
-    private final GridBagConstraints menuButtonConstraints = new GridBagConstraints();
-    private final JPanel southernContainer = new JPanel();
+    private final JPanel menuButtonsContainer;
+    private final GridBagConstraints menuButtonConstraints;
+    private final JPanel southernContainer;
 
     public Orderkiosk(CardLayout mainCardLayout, JPanel mainCardPanel) {
         this.setLayout(new BorderLayout());
         this.setBackground(Color.WHITE);
+
+        //containers for components
+        menuButtonsContainer = new JPanel(new GridBagLayout());
         menuButtonsContainer.setBackground(Color.WHITE);
+        southernContainer = new JPanel();
         southernContainer.setBackground(Color.WHITE);
 
+        CardLayout menuCardLayout = new CardLayout();
+        JPanel menuCardPanel = new JPanel(menuCardLayout);
+        menuCardPanel.add(new JScrollPane(new SanwichMenu()), "SandwichMenu");
+
         //these buttons will stay for the duration of the program life cycle
+        menuButtonConstraints = new GridBagConstraints();
         menuButtonConstraints.fill = GridBagConstraints.BOTH;
+        JButton sandwichMenuButton = new JButton();
         layMenuButton(sandwichMenuButton, "Sandwiches", 0);
+        JButton drinkMenuButton = new JButton();
         layMenuButton(drinkMenuButton, "Drinks",1);
+        JButton chipMenuButton = new JButton();
         layMenuButton(chipMenuButton, "Chips",2);
+        JButton cancelOrderButton = new JButton();
         laySouthernButton(cancelOrderButton, "Cancel Order", Color.RED, Color.WHITE);
+        JButton checkoutButton = new JButton();
         laySouthernButton(checkoutButton, "Check Out", Color.GREEN, Color.WHITE);
 
+        //adding everything
         this.add(menuButtonsContainer, BorderLayout.WEST);
         this.add(southernContainer, BorderLayout.SOUTH);
+        this.add(menuCardPanel, BorderLayout.CENTER);
 
         cancelOrderButton.addActionListener(e -> {
             mainCardLayout.show(mainCardPanel, "WelcomeScreen");
