@@ -2,15 +2,18 @@ package org.pluralsight.display;
 
 import org.pluralsight.io.ScannerIO;
 import org.pluralsight.menuitems.Item;
+import org.pluralsight.shop.Order;
 import org.pluralsight.shop.Sandwich;
 import org.pluralsight.shop.Size;
 
 import java.util.ArrayList;
 
 public class SandwichScreen implements Displayable{
+    Order order;
     Sandwich sandwich;
 
-    SandwichScreen() {
+    SandwichScreen(Order order) {
+        this.order = order;
         sandwich = new Sandwich();
     }
 
@@ -25,18 +28,19 @@ public class SandwichScreen implements Displayable{
     @Override
     public void run() {
         display();
-        chooseBreadGuide();
         chooseSizeGuide();
+        chooseBreadGuide();
         chooseMeatGuide();
         chooseCheeseGuide();
         chooseRegularGuide();
         chooseSauceGuide();
         chooseSideGuide();
+        sandwichToastPrompt();
 
-        //ask user for extra of toppings
-        //save to order
-        //print receipt
-        //save receipt
+        order.addSandwich(sandwich);
+
+        //Todo:
+        //validate that the order looks correct to the user
     }
 
     /*-----Private Methods-----*/
@@ -145,18 +149,12 @@ public class SandwichScreen implements Displayable{
     /*-----Helper Methods-----*/
 
     private void printSandwichItems(String prompt, ArrayList<Item> items) {
-        System.out.println(prompt);
+        System.out.println("\n" + prompt);
         for (Item item : items) item.toTerminal();
     }
 
     private void printSandwichSizes() {
-        System.out.println("Here Are The Different Bread Sizes We Have: ");
+        System.out.println("\nHere Are The Different Bread Sizes We Have: ");
         for (Size size : Size.values()) System.out.println(size);
     }
-
-    /*-----Getters-----*/
-    public Sandwich getSandwich() {
-        return sandwich;
-    }
-
 }

@@ -28,8 +28,8 @@ public class ScannerIO {
         while (true) {
             String userInput = getStringInput(prompt).toUpperCase();
             switch (userInput) {
-                case "YES", "Y", "TRUE", "T" -> { return true; }
-                case "NO", "N", "FALSE", "F" -> { return false; }
+                case "YES", "Y", "TRUE", "T", "CONFIRM" -> { return true; }
+                case "NO", "N", "FALSE", "F", "CANCEL" -> { return false; }
                 default -> System.out.println("Oops, Expecting Yes Or No. Try Again");
             }
         }

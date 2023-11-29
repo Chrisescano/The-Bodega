@@ -1,5 +1,7 @@
 package org.pluralsight.shop;
 
+import org.pluralsight.menuitems.Item;
+
 import java.util.ArrayList;
 
 public class Order {
@@ -12,6 +14,7 @@ public class Order {
         sandwiches = new ArrayList<>();
         drinks = new ArrayList<>();
         chips = new ArrayList<>();
+        receipt = new Receipt();
     }
 
     public void addSandwich(Sandwich sandwich) {
@@ -26,7 +29,28 @@ public class Order {
         chips.add(chip);
     }
 
-    public void printReceipt() {
-        //loop through all lists
+    public void printOrder() {
+        for (Sandwich sandwich : sandwiches) {
+            String isToasted = sandwich.isToasted() ? "Toasted" : "Regular";
+            receipt.addLine("1", "BYO " + isToasted, String.valueOf(sandwich.getPrice()));
+            for (Item item : sandwich.getSandwichItems()) {
+                receipt.addLine(
+                        item.getItemName(),
+                        String.valueOf(item.getPrice(sandwich.getBreadSize())));
+            }
+        }
+
+        receipt.addDivider();
+        System.out.println(receipt);
+
+        /*
+        Todo:
+        - loop for drinks
+        - loop for chips
+         */
+    }
+
+    public void saveOrder() {
+        receipt.save();
     }
 }
