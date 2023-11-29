@@ -10,9 +10,34 @@ public class Chip {
 
     public static void main(String[] args) {
         Chip chips = new Chip();
+        chips.selectChip();
     }
 
     public Chip() {
         chips = new ItemManager("chips.csv", false).getItemList();
+    }
+
+    public ArrayList<Item> getChips() {
+        return chips;
+    }
+
+    public void selectChip() {
+        System.out.println("Chips List:");
+        for (Item chip : chips) {
+            System.out.println(chip.getItemName());
+        }
+    }
+
+    public int addChips(String itemName) {
+        for (Item chip : chips) {
+            if (chip.getItemName().equalsIgnoreCase(itemName)) {
+                return 0;
+            }
+        }
+        return 1;
+    }
+
+    public void remove(Item item) {
+        chips.remove(item);
     }
 }
