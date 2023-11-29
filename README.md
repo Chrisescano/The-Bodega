@@ -20,7 +20,12 @@ This application serves as a way of implementing Object Oriented Analysis and OO
 If you happen to find a bug in this project  or a simple improvement you think would benefit, feel free to submit a pull request
 
 ## Clone the project for your own
-Copy the code link on the roject and Using your local terminal type in git clone, pasting the link and Enter. Make sure you change the working directory to where you want the project to be. 
+Copy the code link on the project and Using your local terminal type in git clone, pasting the link and Enter. Make sure you change the working directory to where you want the project to be. 
 
 ## How to work on this project for your own uses:
+1. Fork The Repo
+2. Clone that repo onto your local machine
+3. Create a branch abd make commit changes
+4. Push your new branch to your forked repo
+5. Create a new pull request
 
