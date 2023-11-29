@@ -8,7 +8,7 @@ public class Order {
     private final ArrayList<Sandwich> sandwiches;
     private final ArrayList<Drink> drinks;
     private final ArrayList<Chip> chips;
-    private Receipt receipt;
+    private final Receipt receipt;
 
     public Order() {
         sandwiches = new ArrayList<>();
@@ -39,6 +39,8 @@ public class Order {
                         String.valueOf(item.getPrice(sandwich.getBreadSize())));
             }
         }
+
+
 
         receipt.addDivider();
         System.out.println(receipt);
