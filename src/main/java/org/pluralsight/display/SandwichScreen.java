@@ -29,12 +29,12 @@ public class SandwichScreen implements Displayable{
     public void run() {
         display();
         chooseSizeGuide();
-        chooseBreadGuide();
-        chooseMeatGuide();
-        chooseCheeseGuide();
-        chooseRegularGuide();
-        chooseSauceGuide();
-        chooseSideGuide();
+        chooseItemGuide("Here Are The Different Breads We Have", "Bread", sandwich.getBreads());
+        chooseItemGuide("Here Are The Different Meats We Have", "Meat", sandwich.getMeats());
+        chooseItemGuide("Here Are The Different Cheeses We Have", "Cheese", sandwich.getCheeses());
+        chooseItemGuide("Here Are The Different Regular Toppings We Have", "Regular Toppings", sandwich.getRegularToppings());
+        chooseItemGuide("Here Are The Different Sauces We Have", "Sauces", sandwich.getSauces());
+        chooseItemGuide("Here Are The Different Sides We Have", "Sides", sandwich.getSides());
         sandwichToastPrompt();
 
         order.addSandwich(sandwich);
@@ -44,16 +44,16 @@ public class SandwichScreen implements Displayable{
     }
 
     /*-----Private Methods-----*/
-    private void chooseBreadGuide() {
+    private void chooseItemGuide(String message, String type, ArrayList<Item> list) {
         int flag = -1;
         while (flag == -1) {
-            printSandwichItems("Here Are The Different Breads We Have", sandwich.getBreadToppings());
-            String userBread = ScannerIO.getStringInput("Type In The Bread You Would Like: ");
-            flag = sandwich.addBread(userBread);
+            System.out.println("\n" + message);
+            for (Item item : list) item.toTerminal();
+            String userChoice = ScannerIO.getStringInput("Type In The " + type + " You Would Like: ");
+            flag = sandwich.addItem(userChoice, list);
 
-            if (flag == -1) {
-                System.out.println("Oops, We Do Not Have " + userBread + " As A Bread. Please Try Again");
-            }
+            if (flag == -1)
+                System.out.println("Oops, We Do Not Have " + userChoice + " As A " + type + ". Please Try Again");
         }
     }
 
@@ -72,71 +72,6 @@ public class SandwichScreen implements Displayable{
 
             if (flag == -1) {
                 System.out.println("Oops, We Do Not Have " + userSize + " As A Bread Size. Please Try Again");
-            }
-        }
-    }
-
-    private void chooseMeatGuide() {
-        int flag = -1;
-        while (flag == -1) {
-            printSandwichItems("Here Are The Different Meat Toppings We Have", sandwich.getMeatToppings());
-            String userMeat = ScannerIO.getStringInput("Type In The Meat Topping You Would Like: ");
-            flag = sandwich.addMeat(userMeat);
-
-            if (flag == -1) {
-                System.out.println("Oops, We Do Not Have " + userMeat + " As A Bread Size. Please Try Again");
-            }
-        }
-    }
-
-    private void chooseCheeseGuide() {
-        int flag = -1;
-        while (flag == -1) {
-            printSandwichItems("Here Are The Different Cheese Toppings We Have", sandwich.getCheeseToppings());
-            String userCheese = ScannerIO.getStringInput("Type In The Cheese Topping You Would Like: ");
-            flag = sandwich.addCheese(userCheese);
-
-            if (flag == -1) {
-                System.out.println("Oops, We Do Not Have " + userCheese + " As A Cheese. Please Try Again");
-            }
-        }
-    }
-
-    private void chooseRegularGuide() {
-        int flag = -1;
-        while (flag == -1) {
-            printSandwichItems("Here Are The Different Regular Toppings We Have", sandwich.getRegularToppings());
-            String userRegular = ScannerIO.getStringInput("Type In The Regular Topping You Would Like: ");
-            flag = sandwich.addRegularTopping(userRegular);
-
-            if (flag == -1) {
-                System.out.println("Oops, We Do Not Have " + userRegular + " As A Regular Topping. Please Try Again");
-            }
-        }
-    }
-
-    private void chooseSauceGuide() {
-        int flag = -1;
-        while (flag == -1) {
-            printSandwichItems("Here Are The Different Sauces We Have", sandwich.getSauceToppings());
-            String userSauce = ScannerIO.getStringInput("Type In The Sauce You Would Like: ");
-            flag = sandwich.addSauce(userSauce);
-
-            if (flag == -1) {
-                System.out.println("Oops, We Do Not Have " + userSauce+ " As A Sauce. Please Try Again");
-            }
-        }
-    }
-
-    private void chooseSideGuide() {
-        int flag = -1;
-        while (flag == -1) {
-            printSandwichItems("Here Are The Different Sides We Have", sandwich.getSideToppings());
-            String userSide = ScannerIO.getStringInput("Type In The Side You Would Like: ");
-            flag = sandwich.addSide(userSide);
-
-            if (flag == -1) {
-                System.out.println("Oops, We Do Not Have " + userSide + " As A Side. Please Try Again");
             }
         }
     }
