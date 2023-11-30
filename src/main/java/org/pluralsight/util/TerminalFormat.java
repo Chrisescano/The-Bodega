@@ -7,6 +7,10 @@ public class TerminalFormat {
     private String anchorDivider = "+";
 
     /*-----Common Use Methods-----*/
+    public String tableRow() {
+        return verticalDivider + " ".repeat(msgWidth + 2) + verticalDivider;
+    }
+
     public String tableRow(String text, String padDirection) {
         if (padDirection.equals("center")) text = padEdges(text);
         else if (padDirection.equals("left")) text = padLeft(text);
@@ -68,5 +72,10 @@ public class TerminalFormat {
 
     public void setAnchorDivider(char divider) {
         anchorDivider = String.valueOf(divider);
+    }
+
+    /*-----Getters-----*/
+    public String getAnchorDivider() {
+        return anchorDivider;
     }
 }
