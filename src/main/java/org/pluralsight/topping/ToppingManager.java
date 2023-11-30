@@ -6,7 +6,8 @@ import java.io.File;
 import java.util.ArrayList;
 
 public class ToppingManager {
-    ArrayList<Topping> toppingsList;
+    private final ArrayList<Topping> toppingsList;
+    private final int uniqueToppings;
 
     public ToppingManager() {
         toppingsList = new ArrayList<>();
@@ -14,13 +15,15 @@ public class ToppingManager {
         File directory = new File("resource/toppings");
         String[] toppingFileNames = directory.list();
 
-        assert toppingFileNames != null; //intellij required this, not sure why
+        assert toppingFileNames != null;
+        uniqueToppings = toppingFileNames.length;
         for (String fileName : toppingFileNames) {
             String[] toppings = fileManager.readFromFile(fileName).split("\n");
             for (String topping : toppings) {
+                String toppingType = fileName.substring(0, fileName.indexOf('.'));
                 switch (fileName) {
-                    case "meats.csv", "cheese.csv" -> toppingsList.add(new PremiumTopping(topping));
-                    default -> toppingsList.add(new RegularTopping(topping));
+                    case "meats.csv", "cheese.csv" -> toppingsList.add(new PremiumTopping(topping, toppingType));
+                    default -> toppingsList.add(new RegularTopping(topping, toppingType));
                 }
             }
         }
@@ -33,5 +36,13 @@ public class ToppingManager {
             }
         }
         return null;
+    }
+
+    public ArrayList<Topping> getToppingList() {
+        return toppingsList;
+    }
+
+    public int getUniqueToppings() {
+        return uniqueToppings;
     }
 }

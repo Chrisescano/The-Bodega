@@ -9,7 +9,7 @@ class PremiumToppingTest {
 
     @Test
     void getPrice() {
-        PremiumTopping premiumTopping = new PremiumTopping("american|0.75|1.50|2.25|0.30|0.60|0.90");
+        PremiumTopping premiumTopping = new PremiumTopping("american|0.75|1.50|2.25|0.30|0.60|0.90", "cheese");
         assertEquals(0.75, premiumTopping.getPrice(Size.SMALL));
         assertEquals(1.50, premiumTopping.getPrice(Size.MEDIUM));
         assertEquals(2.25, premiumTopping.getPrice(Size.LARGE));

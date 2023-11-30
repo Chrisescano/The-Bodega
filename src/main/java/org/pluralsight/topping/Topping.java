@@ -4,6 +4,7 @@ import org.pluralsight.shop.Size;
 import java.util.HashMap;
 
 public abstract class Topping {
+    protected String toppingType;
     protected String toppingName;
     protected HashMap<Size, Double> toppingPrice;
     protected String[] toppingTokens;
@@ -21,14 +22,16 @@ public abstract class Topping {
     }
 
     /*-----Getters-----*/
-
+    public  String getType() {
+        return toppingType;
+    }
     public String getName() {
         return toppingName;
     }
 
+    /*-----Abstract Methods-----*/
     public boolean isExtraOrdered() {
         return extraOrdered;
     }
-
     public abstract double getPrice(Size size);
 }

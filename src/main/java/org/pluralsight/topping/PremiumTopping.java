@@ -7,7 +7,7 @@ import java.util.HashMap;
 public class PremiumTopping extends Topping {
     private final HashMap<Size, Double> premiumPrice;
 
-    public PremiumTopping(String toppingInformation) {
+    public PremiumTopping(String toppingInformation, String toppingType) {
         super(toppingInformation);
         premiumPrice = new HashMap<>();
 
@@ -19,6 +19,7 @@ public class PremiumTopping extends Topping {
         premiumPrice.put(Size.MEDIUM, Double.valueOf(toppingTokens[5]));
         premiumPrice.put(Size.LARGE, Double.valueOf(toppingTokens[6]));
         extraOrdered = false;
+        this.toppingType = toppingType;
     }
 
     @Override
