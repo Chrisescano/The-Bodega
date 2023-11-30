@@ -46,4 +46,10 @@ class SandwichTest {
         Sandwich sandwich = new Sandwich("Build Your Own|7.00|medium|toasted|white");
         assertEquals(7.00, sandwich.getPrice());
     }
+
+    @Test
+    void getSize() {
+        Sandwich sandwich = new Sandwich("Build Your Own|7.00|large|toasted|white");
+        assertEquals(Size.LARGE, sandwich.getSize());
+    }
 }
