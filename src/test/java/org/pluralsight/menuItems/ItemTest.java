@@ -16,8 +16,18 @@ class ItemTest {
             }
 
             @Override
-            protected double getPrice() {
+            public double getPrice() {
                 return 0;
+            }
+
+            @Override
+            public String getItemType() {
+                return null;
+            }
+
+            @Override
+            public Size getSize() {
+                return null;
             }
         };
 
@@ -33,8 +43,18 @@ class ItemTest {
             }
 
             @Override
-            protected double getPrice() {
+            public double getPrice() {
                 return 0;
+            }
+
+            @Override
+            public String getItemType() {
+                return null;
+            }
+
+            @Override
+            public Size getSize() {
+                return null;
             }
         };
 
@@ -50,8 +70,18 @@ class ItemTest {
             }
 
             @Override
-            protected double getPrice() {
+            public double getPrice() {
                 return 0;
+            }
+
+            @Override
+            public String getItemType() {
+                return null;
+            }
+
+            @Override
+            public Size getSize() {
+                return null;
             }
         };
         assertEquals(0, item.getPrice(Size.SMALL));

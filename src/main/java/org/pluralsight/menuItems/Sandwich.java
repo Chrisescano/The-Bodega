@@ -9,7 +9,6 @@ import java.util.ArrayList;
 public class Sandwich extends Item {
     ToppingManager toppingManager;
     private ArrayList<Topping> sandwichToppings;
-    private Size size;
     private boolean isToasted;
 
     public Sandwich(String itemInformation) {
@@ -64,7 +63,17 @@ public class Sandwich extends Item {
     }
 
     @Override
-    protected double getPrice() {
+    public double getPrice() {
         return price;
+    }
+
+    @Override
+    public String getItemType() {
+        return "sandwich";
+    }
+
+    @Override
+    public Size getSize() {
+        return size;
     }
 }

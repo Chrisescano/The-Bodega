@@ -14,6 +14,7 @@ public class Chip extends Item {
         itemPrice.put(Size.SMALL, Double.valueOf(itemTokens[1]));
         itemPrice.put(Size.MEDIUM, Double.valueOf(itemTokens[2]));
         itemPrice.put(Size.LARGE, Double.valueOf(itemTokens[3]));
+        size = Size.MEDIUM;
     }
 
     @Override
@@ -22,8 +23,18 @@ public class Chip extends Item {
     }
 
     @Override
-    protected double getPrice() {
-        return 0;
+    public double getPrice() {
+        return getPrice(size);
+    }
+
+    @Override
+    public String getItemType() {
+        return "chip";
+    }
+
+    @Override
+    public Size getSize() {
+        return size;
     }
 
 }
