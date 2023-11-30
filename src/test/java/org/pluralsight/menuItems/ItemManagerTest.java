@@ -19,7 +19,7 @@ class ItemManagerTest {
     @Test
     void getItemInfoByType() {
         ItemManager itemManager = new ItemManager();
-        ArrayList<String> itemsByType = itemManager.getItemInfoByType("sandwiches");
+        ArrayList<String> itemsByType = itemManager.getItemsByType("sandwiches");
 
         assertEquals("Philly Cheese Steak|10.50||medium|toasted|white|steak|american|peppers|mayo", itemsByType.get(2));
     }
