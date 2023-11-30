@@ -18,11 +18,12 @@ public class PremiumTopping extends Topping {
         premiumPrice.put(Size.SMALL, Double.valueOf(toppingTokens[4]));
         premiumPrice.put(Size.MEDIUM, Double.valueOf(toppingTokens[5]));
         premiumPrice.put(Size.LARGE, Double.valueOf(toppingTokens[6]));
+        extraOrdered = false;
     }
 
     @Override
     public double getPrice(Size size) {
-        return extraOrdered ? toppingPrice.get(size) :
-                toppingPrice.get(size) + premiumPrice.get(size);
+        return extraOrdered ? toppingPrice.get(size) + premiumPrice.get(size) :
+                toppingPrice.get(size);
     }
 }

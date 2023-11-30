@@ -13,8 +13,8 @@ public class ItemManager {
         itemType = new ArrayList<>();
         itemInformation = new ArrayList<>();
 
-        FileManager fileManager = new FileManager("resources/menuItems");
-        String[] menuItemFileNames = new File("resources/menuItems").list();
+        FileManager fileManager = new FileManager("resource/menuItems/");
+        String[] menuItemFileNames = new File("resource/menuItems").list();
 
         assert menuItemFileNames != null; ////intellij required this, not sure why
         for (String fileName : menuItemFileNames) {
