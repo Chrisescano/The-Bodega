@@ -3,13 +3,15 @@
 
 This application serves as a way of implementing Object Oriented Analysis and OOP concepts in designing an app that includes classes and interfaces to show how it'll progress as a project that helps someone manage orders for a business and to convert their operation to making salles. The project shows sample code including the following:
 
-*Takes users inputs of Sandwich orders and customize to their liking 
+*Takes users inputs of Sandwich orders and customize to their liking ![image](https://github.com/Chrisescano/The-Bodega/assets/147072859/999e67a1-4b26-4faf-b763-15d386eedfc5)
+
 
 *Adding both regular and premium toppings along with sides (chips and drink) due to the customers preference
 
 *Creation of a UML diagram showcasing the application features
 
-*Classes that list features of sandwich orders
+*Classes that list features of sandwich orders ![image](https://github.com/Chrisescano/The-Bodega/assets/147072859/60dde8a2-2044-414d-b7d3-52d8f96798e4)
+
 
 *Receipts folder with order details from customers
 
