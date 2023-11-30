@@ -3,13 +3,8 @@ package org.pluralsight.display;
 import org.pluralsight.io.ScannerIO;
 
 public class HomeScreen implements Displayable {
-
-    public static void main(String[] args) {
-        new HomeScreen().run();
-    }
-
     @Override
-    public void display() {
+    public void screen() {
         System.out.print("""
                 Welcome To The Bodega Sandwich Shop!
                 Would You Like To:
@@ -21,7 +16,7 @@ public class HomeScreen implements Displayable {
     @Override
     public void run() {
         while (true) {
-            display();
+            screen();
             int userInput = ScannerIO.getIntInput("Enter Your Command: ");
             switch (userInput) {
                 case 1 -> new OrderScreen().run();

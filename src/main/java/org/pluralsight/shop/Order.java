@@ -1,58 +1,42 @@
 package org.pluralsight.shop;
 
-import org.pluralsight.menuitems.Item;
+import org.pluralsight.menuItems.Chip;
+import org.pluralsight.menuItems.Drink;
+import org.pluralsight.menuItems.Item;
+import org.pluralsight.menuItems.Sandwich;
 
 import java.util.ArrayList;
 
 public class Order {
-    private final ArrayList<Sandwich> sandwiches;
-    private final ArrayList<Drink> drinks;
-    private final ArrayList<Chip> chips;
-    private final Receipt receipt;
+    private final ArrayList<Item> items;
+    private double price;
 
     public Order() {
-        sandwiches = new ArrayList<>();
-        drinks = new ArrayList<>();
-        chips = new ArrayList<>();
-        receipt = new Receipt();
+        items = new ArrayList<>();
+        price = 0;
     }
 
     public void addSandwich(Sandwich sandwich) {
-        sandwiches.add(sandwich);
-    }
-
-    public void addDrink(Drink drink) {
-        drinks.add(drink);
+        items.add(sandwich);
+        price += sandwich.getPrice();
     }
 
     public void addChip(Chip chip) {
-        chips.add(chip);
+        items.add(chip);
+        price += chip.getPrice();
     }
 
-    public void printOrder() {
-        for (Sandwich sandwich : sandwiches) {
-            String isToasted = sandwich.isToasted() ? "Toasted" : "Regular";
-            receipt.addLine("1", "BYO " + isToasted, String.valueOf(sandwich.getPrice()));
-            for (Item item : sandwich.getSandwichItems()) {
-                receipt.addLine(
-                        item.getItemName(),
-                        String.valueOf(item.getPrice(sandwich.getBreadSize())));
-            }
-        }
-
-
-
-        receipt.addDivider();
-        System.out.println(receipt);
-
-        /*
-        Todo:
-        - loop for drinks
-        - loop for chips
-         */
+    public void addDrink(Drink drink) {
+        items.add(drink);
+        price += drink.getPrice();
     }
 
-    public void saveOrder() {
-        receipt.save();
+    public void removeItem(int index) {
+        items.remove(index);
+    }
+
+    /*-----Getter-----*/
+    public double getPrice() {
+        return price;
     }
 }

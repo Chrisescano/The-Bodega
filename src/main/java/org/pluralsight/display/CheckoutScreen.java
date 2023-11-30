@@ -5,14 +5,14 @@ import org.pluralsight.shop.Order;
 import org.pluralsight.shop.Receipt;
 
 public class CheckoutScreen implements Displayable{
-    private Order order;
+    //private Order order;
 
     public CheckoutScreen(Order order) {
-        this.order = order;
+        //this.order = order;
     }
 
     @Override
-    public void display() {
+    public void screen() {
         System.out.println("""
                 
                 So Far Here Is How Your Order Looks Like:
@@ -21,13 +21,13 @@ public class CheckoutScreen implements Displayable{
 
     @Override
     public void run() {
-        display();
-        order.printOrder();
+        screen();
+        //order.printOrder();
 
         while (true) {
             boolean userBool = ScannerIO.getBooleanInput("Type In Confirm To Save Your Order Or Cancel To Discard: ");
             if (userBool) {
-                order.saveOrder();
+                //order.saveOrder();
             }
             return;
         }
