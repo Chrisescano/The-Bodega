@@ -19,7 +19,7 @@ This application serves as a way of implementing Object Oriented Analysis and OO
 
 *Receipts folder with order details from customers
 
-## Take a look at the UML diagram displaying the whole application system : ![image](https://github.com/Chrisescano/The-Bodega/assets/147072859/d7ad6f64-5c97-4421-8e2b-8c959b5e4d88)
+## Take a look at the UML diagram displaying the whole application system : ![image](https://github.com/Chrisescano/The-Bodega/assets/147072859/3ad41675-85d0-4ff7-b87e-cb1dfacab846)
 
 
 ## Clone the project for your own
