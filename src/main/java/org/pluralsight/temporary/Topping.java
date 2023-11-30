@@ -5,13 +5,13 @@ import java.util.HashMap;
 
 public abstract class Topping {
     protected String toppingName;
-    protected HashMap<Size, Double> toppingPrices;
+    protected HashMap<Size, Double> toppingPrice;
     protected String[] toppingTokens;
     protected boolean extraOrdered;
 
     public Topping(String toppingInformation) {
         toppingTokens = toppingInformation.split("\\|");
-        toppingPrices = new HashMap<>();
+        toppingPrice = new HashMap<>();
     }
 
     /*-----Setters-----*/
@@ -22,7 +22,7 @@ public abstract class Topping {
 
     /*-----Getters-----*/
 
-    public String getToppingName() {
+    public String getName() {
         return toppingName;
     }
 
