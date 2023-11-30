@@ -10,10 +10,9 @@ This application serves as a way of implementing Object Oriented Analysis and OO
 
 *Creation of a UML diagram showcasing the application features
 
-*Classes that list features of sandwich orders
+*Classes that list features of sandwich orders ![image](https://github.com/Chrisescano/The-Bodega/assets/147072859/87d8e91b-4f1d-44eb-960f-8332955875d9)
+![image](https://github.com/Chrisescano/The-Bodega/assets/147072859/b1398bfc-5ed5-4544-acfa-4f7682830b77) ![image](https://github.com/Chrisescano/The-Bodega/assets/147072859/51efa3e6-47c5-496f-be80-f89e5394a809)
 
-
-![image](https://github.com/Chrisescano/The-Bodega/assets/147072859/60dde8a2-2044-414d-b7d3-52d8f96798e4)
 
 
 *Receipts folder with order details from customers
