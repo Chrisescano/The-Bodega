@@ -11,7 +11,7 @@ public abstract class Item {
         itemTokens = itemInformation.split("\\|");
     }
 
-    public String getItemName() {
+    public String getName() {
         return itemName;
     }
 

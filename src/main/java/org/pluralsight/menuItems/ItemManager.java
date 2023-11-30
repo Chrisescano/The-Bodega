@@ -14,17 +14,28 @@ public class ItemManager {
         itemInformation = new ArrayList<>();
 
         FileManager fileManager = new FileManager("resource/menuItems/");
-        String[] menuItemFileNames = new File("resource/menuItems").list();
+        File directory = new File("resource/menuItems");
+        String[] menuItemFileNames = directory.list();
 
         assert menuItemFileNames != null; ////intellij required this, not sure why
         for (String fileName : menuItemFileNames) {
             String[] menuItems = fileManager.readFromFile(fileName).split("\n");
             for (String menuItem : menuItems) {
-                itemType.add(fileName);
+                itemType.add(fileName.substring(0, fileName.indexOf('.')));
                 itemInformation.add(menuItem);
             }
         }
     }
 
-    //ability to get item info from what the constructor did
+    public String[] getItemInformation(String itemName) {
+        for (int i = 0; i < itemInformation.size(); i++) {
+            int indexOfPipe = itemInformation.get(i).indexOf("|");
+            System.out.println(indexOfPipe);
+            String name = itemInformation.get(i).substring(0, indexOfPipe);
+            if (name.equalsIgnoreCase(itemName)) {
+                return new String [] {itemType.get(i), itemInformation.get(i)};
+            }
+        }
+        return null;
+    }
 }

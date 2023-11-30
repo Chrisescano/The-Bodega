@@ -15,6 +15,7 @@ public class Sandwich extends Item {
     public Sandwich(String itemInformation) {
         super(itemInformation);
         toppingManager = new ToppingManager();
+        sandwichToppings = new ArrayList<>();
 
         itemName = itemTokens[0];
         price = Double.parseDouble(itemTokens[1]);
@@ -28,17 +29,28 @@ public class Sandwich extends Item {
 
     public void addTopping(String toppingName) {
         Topping topping;
-        if ((topping = toppingManager.getTopping(toppingName)) != null)
+        if ((topping = toppingManager.getTopping(toppingName)) != null) {
             sandwichToppings.add(topping);
+            price += topping.getPrice(size);
+        }
     }
 
     public void removeTopping(String toppingName) {
-        sandwichToppings.removeIf(topping -> topping.getName().equalsIgnoreCase(toppingName));
+        for (Topping topping : sandwichToppings) {
+            if (topping.getName().equalsIgnoreCase(toppingName)) {
+                sandwichToppings.remove(topping);
+                price -= topping.getPrice(size);
+            }
+        }
     }
 
     /*-----Getters-----*/
     public boolean isToasted() {
         return isToasted;
+    }
+
+    public ArrayList<Topping> getSandwichToppings() {
+        return sandwichToppings;
     }
 
     /*-----Setters-----*/
