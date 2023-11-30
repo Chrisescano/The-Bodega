@@ -1,16 +1,18 @@
-package org.pluralsight.temporary;
+package org.pluralsight.menuItems;
 
 import org.pluralsight.shop.Size;
+import org.pluralsight.topping.Topping;
+import org.pluralsight.topping.ToppingManager;
 
 import java.util.ArrayList;
 
-public class bSandwich extends Item {
+public class Sandwich extends Item {
     ToppingManager toppingManager;
     private ArrayList<Topping> sandwichToppings;
     private Size size;
     private boolean isToasted;
 
-    public bSandwich(String itemInformation) {
+    public Sandwich(String itemInformation) {
         super(itemInformation);
         toppingManager = new ToppingManager();
 

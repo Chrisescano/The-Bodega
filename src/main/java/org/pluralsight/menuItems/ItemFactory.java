@@ -1,16 +1,16 @@
-package org.pluralsight.temporary;
+package org.pluralsight.menuItems;
 
 public class ItemFactory {
 
     public static Item buildSandwich(String itemInformation) {
-        return new bSandwich(itemInformation);
+        return new Sandwich(itemInformation);
     }
 
     public static Item buildChip(String itemInformation) {
-        return new bChip(itemInformation);
+        return new Chip(itemInformation);
     }
 
     public static Item buildDrink(String itemInformation) {
-        return new bDrink(itemInformation);
+        return new Drink(itemInformation);
     }
 }

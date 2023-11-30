@@ -1,13 +1,13 @@
-package org.pluralsight.temporary;
+package org.pluralsight.menuItems;
 
 import org.pluralsight.shop.Size;
 
 import java.util.HashMap;
 
-public class bDrink extends Item {
+public class Drink extends Item {
     private HashMap<Size, Double> itemPrices;
 
-    public bDrink(String itemInformation) {
+    public Drink(String itemInformation) {
         super(itemInformation);
         itemName = itemTokens[0];
         itemPrices = new HashMap<>();

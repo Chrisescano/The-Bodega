@@ -1,6 +1,9 @@
-package org.pluralsight.temporary;
+package org.pluralsight.topping;
 
 import org.pluralsight.io.FileManager;
+import org.pluralsight.topping.PremiumTopping;
+import org.pluralsight.topping.RegularTopping;
+import org.pluralsight.topping.Topping;
 
 import java.io.File;
 import java.util.ArrayList;

@@ -1,10 +1,10 @@
-package org.pluralsight.temporary;
+package org.pluralsight.topping;
 
 import org.pluralsight.shop.Size;
 
 import java.util.HashMap;
 
-public class PremiumTopping extends Topping{
+public class PremiumTopping extends Topping {
     private final HashMap<Size, Double> premiumPrice;
 
     public PremiumTopping(String toppingInformation) {

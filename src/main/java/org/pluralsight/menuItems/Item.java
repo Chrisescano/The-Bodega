@@ -1,4 +1,4 @@
-package org.pluralsight.temporary;
+package org.pluralsight.menuItems;
 
 import org.pluralsight.shop.Size;
 
