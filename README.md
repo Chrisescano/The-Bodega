@@ -15,7 +15,7 @@ This application serves as a way of implementing Object Oriented Analysis and OO
 
 *Receipts folder with order details from customers
 
-#Take a look at the UML diagram displaying the whole application system : https://github.com/Chrisescano/The-Bodega/blob/lizata-branch/ClassDiagram/Capstone_2_class_diagram.pdf ![image](https://github.com/Chrisescano/The-Bodega/assets/147072859/f735d39d-c0ff-4f0a-a641-681b053eb3c0)
+#Take a look at the UML diagram displaying the whole application system : ![image](https://github.com/Chrisescano/The-Bodega/assets/147072859/d7ad6f64-5c97-4421-8e2b-8c959b5e4d88)
 
 
 ## Found a bug ?
