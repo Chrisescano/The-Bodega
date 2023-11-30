@@ -11,6 +11,8 @@ This application serves as a way of implementing Object Oriented Analysis and OO
 *Creation of a UML diagram showcasing the application features
 
 *Classes that list features of sandwich orders
+
+
 ![image](https://github.com/Chrisescano/The-Bodega/assets/147072859/60dde8a2-2044-414d-b7d3-52d8f96798e4)
 
 
