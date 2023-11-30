@@ -10,7 +10,6 @@ import org.pluralsight.shop.Size;
 import java.util.ArrayList;
 
 public class MenuTable implements Displayable {
-    private final ItemManager itemManager;
     private final ArrayList<String> sandwiches;
     private final ArrayList<String> chips;
     private final ArrayList<String> drinks;
@@ -19,33 +18,15 @@ public class MenuTable implements Displayable {
     private final TerminalFormat sandwichSection = new TerminalFormat();
     private final TerminalFormat drinkSection = new TerminalFormat();
     private final TerminalFormat chipSection = new TerminalFormat();
-    /*
-     * row sandwiches:
-     *   [name of sandwich] (19) + 1 char space
-     *   [$xx.xx] (5)
-     *   total = 19 + 1 + 5 = 25 chars
-     *
-     * row drinks:
-     *   [name of drinks] (10) + 1 char space
-     *   [$xx.xx] (5) x 3 -> 1 pade of space between each (2)
-     *   total = 10 + 1 + 15 + 2 = 27 chars
-     *
-     * row chips:
-     *   {same as drinks} = 27 chars
-     *
-     * total for all:
-     *   25 + 27 + 27 -> for each terminal formatter
-     *
-     * table header:
-     *   25 + 27 + 27 + 2= 81 chars
-     */
+
     public MenuTable() {
-        itemManager = new ItemManager();
+        ItemManager itemManager = new ItemManager();
         sandwiches = itemManager.getItemsByType("sandwiches");
         chips = itemManager.getItemsByType("chips");
         drinks = itemManager.getItemsByType("drinks");
         menuTableBuilder = new StringBuilder();
 
+        //calculated lengths to fit table
         tableHeader.setWidth(91);
         sandwichSection.setWidth(25);
         drinkSection.setWidth(32);
@@ -60,11 +41,6 @@ public class MenuTable implements Displayable {
             createBodyRow(i);
         }
         createBodyDivider();
-    }
-
-    public static void main(String[] args) {
-        MenuTable menuTable = new MenuTable();
-        menuTable.run();
     }
 
     /*-----Private Methods-----*/
