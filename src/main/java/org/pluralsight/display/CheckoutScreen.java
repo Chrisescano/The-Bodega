@@ -12,7 +12,7 @@ public class CheckoutScreen implements Displayable{
     }
 
     @Override
-    public void display() {
+    public void screen() {
         System.out.println("""
                 
                 So Far Here Is How Your Order Looks Like:
@@ -21,7 +21,7 @@ public class CheckoutScreen implements Displayable{
 
     @Override
     public void run() {
-        display();
+        screen();
         //order.printOrder();
 
         while (true) {

@@ -1,25 +1,26 @@
 package org.pluralsight.display;
 
 import org.pluralsight.io.ScannerIO;
+import org.pluralsight.menuItems.Sandwich;
 import org.pluralsight.shop.Order;
 
 public class OrderScreen implements Displayable {
-    //Order order;
+    Order order;
+    SandwichScreen sandwichScreen;
+    DrinksScreen drinksScreen;
+    ChipsScreen chipsScreen;
+    CheckoutScreen checkoutScreen;
 
     public OrderScreen() {
-        //order = new Order();
-    }
-
-    private void checkout() {
-        System.out.println("Displaying checkout method \n");
-    }
-
-    private void cancelOrder() {
-        System.out.println("Displaying cancelOrder method \n");
+        order = new Order();
+        sandwichScreen = new SandwichScreen(order);
+        drinksScreen = new DrinksScreen();
+        chipsScreen = new ChipsScreen();
+        checkoutScreen = new CheckoutScreen(order);
     }
 
     @Override
-    public void display() {
+    public void screen() {
         System.out.print("""
                 
                 You Can Add The Following To Your Order
@@ -34,19 +35,15 @@ public class OrderScreen implements Displayable {
     @Override
     public void run() {
         while (true) {
-            display();
+            screen();
             int userInput = ScannerIO.getIntInput("Enter Your Command: ");
             switch (userInput) {
-                case 1 -> {
-                    //SandwichScreen sandwichScreen = new SandwichScreen(order);
-                    //sandwichScreen.run();
-                }
-                case 2 -> System.out.println("Order A Drink");
-                case 3 -> System.out.println("Order A Chip");
+                case 1 -> sandwichScreen.run();
+                case 2 -> drinksScreen.run();
+                case 3 -> chipsScreen.run();
                 case 4 -> {
-                    //CheckoutScreen checkoutScreen = new CheckoutScreen(order);
-                    //checkoutScreen.run();
-                    //return;
+                    checkoutScreen.run();
+                    return;
                 }
                 case 0 -> { return; }
                 default -> System.out.println("Sorry, "+ userInput +" Is Not A Valid Command. Try Again");

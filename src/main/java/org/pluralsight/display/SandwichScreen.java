@@ -15,7 +15,7 @@ public class SandwichScreen implements Displayable{
     }
 
     @Override
-    public void display() {
+    public void screen() {
         System.out.print("""
                 
                 Let's Guide You Through The Sandwich Making Process
