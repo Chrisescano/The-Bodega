@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class Sandwich extends Item {
     ToppingManager toppingManager;
-    private ArrayList<Topping> sandwichToppings;
+    private final ArrayList<Topping> sandwichToppings;
     private boolean isToasted;
 
     public Sandwich(String itemInformation) {

@@ -32,7 +32,6 @@ public class ItemManager {
     public String[] getItemInformation(String itemName) {
         for (int i = 0; i < itemInformation.size(); i++) {
             int indexOfPipe = itemInformation.get(i).indexOf("|");
-            System.out.println(indexOfPipe);
             String name = itemInformation.get(i).substring(0, indexOfPipe);
             if (name.equalsIgnoreCase(itemName)) {
                 return new String [] {itemType.get(i), itemInformation.get(i)};
@@ -41,7 +40,7 @@ public class ItemManager {
         return null;
     }
 
-    public ArrayList<String> getItemInfoByType(String type) {
+    public ArrayList<String> getItemsByType(String type) {
         ArrayList<String> itemsByType = new ArrayList<>();
         for (int i = 0; i < itemType.size(); i++) {
             if (itemType.get(i).equalsIgnoreCase(type)) {

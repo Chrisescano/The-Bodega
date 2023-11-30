@@ -5,7 +5,7 @@ import org.pluralsight.shop.Size;
 import java.util.HashMap;
 
 public class Drink extends Item {
-    private HashMap<Size, Double> itemPrices;
+    private final HashMap<Size, Double> itemPrices;
     Size size;
 
     public Drink(String itemInformation) {
