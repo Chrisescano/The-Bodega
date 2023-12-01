@@ -63,9 +63,6 @@ public class Sandwich extends Item {
 
     @Override
     public double getPrice() {
-        for (Topping topping : sandwichToppings) {
-            price += topping.getPrice(size);
-        }
         return price;
     }
 
@@ -84,10 +81,17 @@ public class Sandwich extends Item {
         StringBuilder sandwichBuilder = new StringBuilder();
         TerminalFormat terminalFormat = new TerminalFormat();
 
-
+        for (Topping topping : sandwichToppings) {
+            price += topping.getPrice(size);
+        }
 
         sandwichBuilder.append(terminalFormat.tableRow(
-                itemName, String.valueOf(getPrice()), "between"
+                itemName, String.valueOf(price), "between"
+        )).append("\n");
+
+        sandwichBuilder.append(terminalFormat.tableRow(
+                "  " + size.getBreadSize() + (isToasted ? " (Toasted)" : " (Regular)"),
+                "right"
         )).append("\n");
 
         for (Topping topping : sandwichToppings) {
