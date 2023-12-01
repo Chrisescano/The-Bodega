@@ -24,7 +24,7 @@ public class DrinksScreen implements Displayable {
     public void screen() {
         System.out.println("""
                 
-                Here Is A Menu Of Our Chips
+                Here Is A Menu Of Our Drinks
                 """);
         menuTable.run();
     }
