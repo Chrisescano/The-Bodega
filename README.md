@@ -19,10 +19,17 @@ This application serves as a way of implementing Object Oriented Analysis and OO
 
 *Receipts folder with order details from customers
 
-## Take a look at the UML diagram displaying the whole application system : ![image](https://github.com/Chrisescano/The-Bodega/assets/147072859/3ad41675-85d0-4ff7-b87e-cb1dfacab846)
-
-
-## Clone the project for your own
+## Software Architecture
+1. Overview: The Bodega project serves as a developed application to take on customizable sandwich orders fulfilling the users needs to order their own sandwich with a variety of choicesimplemented within the system
+2. Components:
+User Interface- Handling user interactions for ordering sandwiches
+Order Processing- Management of order requests and customizations
+Database- Storage component storing customer preferences, orders, ingredients, etc.
+3. Data Flow: User Interface-> Order Processing->: User selects sandwich options and are then processed as orders
+   Order Processing-> Database: Once orders are completed, customers receipts are stored
+   Database-> Order Processing: Customers receipts may be retrieved to customize future orders
+4. Technologies/Frameworks: Back-end-> Java
+## Clone the project
 Copy the code link on the project and Using your local terminal type in git clone, pasting the link and Enter. Make sure you change the working directory to where you want the project to be. 
 
 ## How to work on this project for your own uses:
@@ -35,3 +42,11 @@ Copy the code link on the project and Using your local terminal type in git clon
 ## Found a bug ?
 If you happen to find a bug in this project  or a simple improvement you think would benefit, feel free to submit a pull request
 
+## Credits - Tools We Used
+. Lucid Chart
+. UMLET
+. YouTube
+. ChatGpt
+. JavaDocs
+. Slack
+. Github
