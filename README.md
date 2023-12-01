@@ -29,6 +29,9 @@ Database- Storage component storing customer preferences, orders, ingredients, e
    Order Processing-> Database: Once orders are completed, customers receipts are stored
    Database-> Order Processing: Customers receipts may be retrieved to customize future orders
 4. Technologies/Frameworks: Back-end-> Java
+
+## Copy Of UML diagram ![image](https://github.com/Chrisescano/The-Bodega/assets/147072859/4a43245a-ef51-4728-bc04-659d22aa1f7e)
+
 ## Clone the project
 Copy the code link on the project and Using your local terminal type in git clone, pasting the link and Enter. Make sure you change the working directory to where you want the project to be. 
 
