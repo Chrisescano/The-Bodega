@@ -45,11 +45,14 @@ Copy the code link on the project and Using your local terminal type in git clon
 ## Found a bug ?
 If you happen to find a bug in this project  or a simple improvement you think would benefit, feel free to submit a pull request
 
-## Credits - Tools We Used
+## Acknowledgments
+1. Contributors: United Mavericks Team-> Christian Escano, Kary Martinez, Tyson Hall, Lizata Camara
+2. Credits/Tools:
 . Lucid Chart
 . UMLET
 . YouTube
 . ChatGpt
 . JavaDocs
 . Slack
-. Github
+. Github\
+3. Special Thanks to anyone who enjoys this project as much as we did !!
