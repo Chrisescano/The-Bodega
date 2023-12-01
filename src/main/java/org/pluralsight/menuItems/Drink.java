@@ -19,9 +19,6 @@ public class Drink extends Item {
     }
 
     /*-----Setters-----*/
-    public void setSize(Size size) {
-        this.size = size;
-    }
 
     @Override
     public double getPrice(Size size) {
@@ -41,5 +38,15 @@ public class Drink extends Item {
     @Override
     public Size getSize() {
         return size;
+    }
+
+    @Override
+    public String print() {
+        return null;
+    }
+
+    @Override
+    public void setSize(Size size) {
+        this.size = size;
     }
 }

@@ -84,6 +84,16 @@ public class Sandwich extends Item {
     }
 
     @Override
+    public String print() {
+        return null;
+    }
+
+    @Override
+    public void setSize(Size size) {
+        this.size = size;
+    }
+
+    @Override
     public String toString() {
         StringBuilder toppingBuilder = new StringBuilder();
         for (Topping topping : sandwichToppings) {

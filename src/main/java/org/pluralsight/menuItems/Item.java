@@ -21,4 +21,6 @@ public abstract class Item {
     public abstract double getPrice();
     public abstract String getItemType();
     public abstract Size getSize();
+    public abstract String print();
+    public abstract void setSize(Size size);
 }

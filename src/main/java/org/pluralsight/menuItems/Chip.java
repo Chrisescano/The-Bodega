@@ -37,4 +37,14 @@ public class Chip extends Item {
         return size;
     }
 
+    @Override
+    public String print() {
+        return null;
+    }
+
+    @Override
+    public void setSize(Size size) {
+        this.size = size;
+    }
+
 }

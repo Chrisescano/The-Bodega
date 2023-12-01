@@ -52,7 +52,7 @@ public class Receipt {
 
     /*-----Private Methods-----*/
     private void init() {
-        FileManager store = new FileManager("");
+        FileManager store = new FileManager("resource/");
         timeStamp = LocalDateTime.now();
 
         String storeFile = store.readFromFile("storeInformation.csv");

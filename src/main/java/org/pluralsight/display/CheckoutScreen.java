@@ -5,10 +5,10 @@ import org.pluralsight.shop.Order;
 import org.pluralsight.shop.Receipt;
 
 public class CheckoutScreen implements Displayable{
-    //private Order order;
+    private Order order;
 
     public CheckoutScreen(Order order) {
-        //this.order = order;
+        this.order = order;
     }
 
     @Override
