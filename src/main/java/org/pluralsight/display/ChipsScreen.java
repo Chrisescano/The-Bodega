@@ -20,7 +20,7 @@ public class ChipsScreen implements Displayable {
 
     @Override
     public void screen() {
-        System.out.println("""
+        System.out.print("""
                 
                 Here Is A Menu Of Our Chips
                 """);

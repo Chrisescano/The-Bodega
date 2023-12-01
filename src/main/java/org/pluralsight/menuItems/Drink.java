@@ -46,7 +46,7 @@ public class Drink extends Item {
         TerminalFormat terminalFormat = new TerminalFormat();
 
         return terminalFormat.tableRow(
-                itemName, String.valueOf(getPrice(size)), "between"
+                itemName + " " + size, String.valueOf(getPrice(size)), "between"
         ) + "\n";
     }
 
