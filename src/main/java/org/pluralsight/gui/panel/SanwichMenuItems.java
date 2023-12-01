@@ -1,5 +1,6 @@
 package org.pluralsight.gui.panel;
 
+import org.pluralsight.gui.util.CardManager;
 import org.pluralsight.gui.util.IconUtil;
 
 import javax.swing.*;
