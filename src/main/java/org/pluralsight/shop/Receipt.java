@@ -14,6 +14,7 @@ public class Receipt {
     private LocalDateTime timeStamp;
     private final DateTimeFormatter receiptFormat;
     private final DateTimeFormatter fileFormat;
+    FileManager fileManager;
 
     public Receipt() {
         receiptHeader = new StringBuilder();
@@ -23,36 +24,27 @@ public class Receipt {
         fileFormat = DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss"); //remove ss for testing purposes
 
         receiptBody.append(format.divider()).append("\n");
-        receiptBody.append(format.tableRow("QTY ITEM","PRICE", "between")).append("\n");
-        receiptBody.append(format.tableRow("--- ----", "-----", "between")).append("\n");
+        receiptBody.append(format.tableRow("ITEM","PRICE", "between")).append("\n");
+        receiptBody.append(format.tableRow("----", "-----", "between")).append("\n");
+
+        fileManager = new FileManager("Receipts/");
     }
 
-    public void addLine(String quantity, String item, String price) {
-        receiptBody.append(format.tableRow(
-                " ".repeat(3 - quantity.length()) + quantity + " " + item,
-                price, "between")).append("\n");
-    }
-
-    public void addLine(String item, String price) {
-        receiptBody.append(format.tableRow("    " + item, price, "between")).append("\n");
-    }
-
-    public void addDivider() {
-        receiptBody.append(format.divider()).append("\n");
+    public void appendToReceipt(String contents) {
+        receiptBody.append(contents);
     }
 
     public void save() {
         init();
         buildReceiptHeader();
-
-        FileManager fileManager = new FileManager("Receipts/");
         String receipt = receiptHeader + receiptBody.toString();
-        fileManager.writeToFile(timeStamp.format(fileFormat) + ".txt", receipt);
+        String fileName = timeStamp.format(fileFormat) + ".txt";
+        fileManager.writeToFile(fileName, receipt);
     }
 
     /*-----Private Methods-----*/
     private void init() {
-        FileManager store = new FileManager("");
+        FileManager store = new FileManager("resource/");
         timeStamp = LocalDateTime.now();
 
         String storeFile = store.readFromFile("storeInformation.csv");

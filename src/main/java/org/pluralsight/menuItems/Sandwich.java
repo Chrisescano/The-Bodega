@@ -1,8 +1,10 @@
 package org.pluralsight.menuItems;
 
 import org.pluralsight.shop.Size;
+import org.pluralsight.topping.RegularTopping;
 import org.pluralsight.topping.Topping;
 import org.pluralsight.topping.ToppingManager;
+import org.pluralsight.util.TerminalFormat;
 
 import java.util.ArrayList;
 
@@ -15,9 +17,7 @@ public class Sandwich extends Item {
         super(itemInformation);
         toppingManager = new ToppingManager();
         sandwichToppings = new ArrayList<>();
-
         itemName = itemTokens[0];
-        price = Double.parseDouble(itemTokens[1]);
         size = Size.valueOf(itemTokens[2].toUpperCase());
         isToasted = itemTokens[3].equalsIgnoreCase("toasted");
 
@@ -26,19 +26,18 @@ public class Sandwich extends Item {
         }
     }
 
-    public void addTopping(String toppingName) {
-        Topping topping;
-        if ((topping = toppingManager.getTopping(toppingName)) != null) {
-            sandwichToppings.add(topping);
-            price += topping.getPrice(size);
-        }
+    public void addTopping(Topping topping) {
+        sandwichToppings.add(topping);
     }
 
-    public void removeTopping(String toppingName) {
-        for (Topping topping : sandwichToppings) {
-            if (topping.getName().equalsIgnoreCase(toppingName)) {
-                sandwichToppings.remove(topping);
-                price -= topping.getPrice(size);
+    public void removeTopping(Topping topping) {
+        sandwichToppings.removeIf(included -> included.getName().equalsIgnoreCase(topping.getName()));
+    }
+
+    public void addExtra(Topping topping) {
+        for (Topping included : sandwichToppings) {
+            if (included.getName().equalsIgnoreCase(topping.getName())) {
+                included.setExtraOrdered(true);
             }
         }
     }
@@ -64,6 +63,9 @@ public class Sandwich extends Item {
 
     @Override
     public double getPrice() {
+        for (Topping topping : sandwichToppings) {
+            price += topping.getPrice(size);
+        }
         return price;
     }
 
@@ -75,5 +77,39 @@ public class Sandwich extends Item {
     @Override
     public Size getSize() {
         return size;
+    }
+
+    @Override
+    public String print() {
+        StringBuilder sandwichBuilder = new StringBuilder();
+        TerminalFormat terminalFormat = new TerminalFormat();
+
+
+
+        sandwichBuilder.append(terminalFormat.tableRow(
+                itemName, String.valueOf(getPrice()), "between"
+        )).append("\n");
+
+        for (Topping topping : sandwichToppings) {
+            sandwichBuilder.append(terminalFormat.tableRow(
+                   "  " + topping.getName(), String.valueOf(topping.getPrice(size)), "between"
+            )).append("\n");
+        }
+
+        return sandwichBuilder.toString();
+    }
+
+    @Override
+    public void setSize(Size size) {
+        this.size = size;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder toppingBuilder = new StringBuilder();
+        for (Topping topping : sandwichToppings) {
+            toppingBuilder.append("[ ").append(topping.getName()).append(" ]");
+        }
+        return toppingBuilder.toString();
     }
 }

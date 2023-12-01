@@ -5,10 +5,10 @@ import org.pluralsight.shop.Order;
 import org.pluralsight.shop.Receipt;
 
 public class CheckoutScreen implements Displayable{
-    //private Order order;
+    private final Order order;
 
     public CheckoutScreen(Order order) {
-        //this.order = order;
+        this.order = order;
     }
 
     @Override
@@ -17,19 +17,15 @@ public class CheckoutScreen implements Displayable{
                 
                 So Far Here Is How Your Order Looks Like:
                 """);
+        order.printOrder();
     }
 
     @Override
     public void run() {
         screen();
-        //order.printOrder();
 
-        while (true) {
-            boolean userBool = ScannerIO.getBooleanInput("Type In Confirm To Save Your Order Or Cancel To Discard: ");
-            if (userBool) {
-                //order.saveOrder();
-            }
-            return;
-        }
+        boolean saveOrder = ScannerIO.getBooleanInput(
+                "Type In Confirm If Everything Looks Ok OR Cancel To Go Back To The Home Screen: ");
+        if (saveOrder) order.save();
     }
 }

@@ -1,6 +1,7 @@
 package org.pluralsight.menuItems;
 
 import org.pluralsight.shop.Size;
+import org.pluralsight.util.TerminalFormat;
 
 import java.util.HashMap;
 
@@ -19,9 +20,6 @@ public class Drink extends Item {
     }
 
     /*-----Setters-----*/
-    public void setSize(Size size) {
-        this.size = size;
-    }
 
     @Override
     public double getPrice(Size size) {
@@ -41,5 +39,19 @@ public class Drink extends Item {
     @Override
     public Size getSize() {
         return size;
+    }
+
+    @Override
+    public String print() {
+        TerminalFormat terminalFormat = new TerminalFormat();
+
+        return terminalFormat.tableRow(
+                itemName, String.valueOf(getPrice(size)), "between"
+        ) + "\n";
+    }
+
+    @Override
+    public void setSize(Size size) {
+        this.size = size;
     }
 }

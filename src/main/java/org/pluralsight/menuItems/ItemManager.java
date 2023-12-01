@@ -37,7 +37,7 @@ public class ItemManager {
                 return new String [] {itemType.get(i), itemInformation.get(i)};
             }
         }
-        return null;
+        return new String[]{null};
     }
 
     public ArrayList<String> getItemsByType(String type) {

@@ -14,8 +14,8 @@ public class OrderScreen implements Displayable {
     public OrderScreen() {
         order = new Order();
         sandwichScreen = new SandwichScreen(order);
-        drinksScreen = new DrinksScreen();
-        chipsScreen = new ChipsScreen();
+        drinksScreen = new DrinksScreen(order);
+        chipsScreen = new ChipsScreen(order);
         checkoutScreen = new CheckoutScreen(order);
     }
 

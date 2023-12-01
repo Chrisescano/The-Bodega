@@ -7,7 +7,6 @@ import java.util.ArrayList;
 
 public class ToppingManager {
     private final ArrayList<Topping> toppingsList;
-    private final int uniqueToppings;
 
     public ToppingManager() {
         toppingsList = new ArrayList<>();
@@ -16,7 +15,6 @@ public class ToppingManager {
         String[] toppingFileNames = directory.list();
 
         assert toppingFileNames != null;
-        uniqueToppings = toppingFileNames.length;
         for (String fileName : toppingFileNames) {
             String[] toppings = fileManager.readFromFile(fileName).split("\n");
             for (String topping : toppings) {
@@ -40,9 +38,5 @@ public class ToppingManager {
 
     public ArrayList<Topping> getToppingList() {
         return toppingsList;
-    }
-
-    public int getUniqueToppings() {
-        return uniqueToppings;
     }
 }
