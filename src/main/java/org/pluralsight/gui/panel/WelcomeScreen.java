@@ -1,5 +1,7 @@
 package org.pluralsight.gui.panel;
 
+import org.pluralsight.gui.kiosk.Orderkiosk;
+import org.pluralsight.gui.util.CardManager;
 import org.pluralsight.gui.util.IconUtil;
 
 import javax.swing.*;
@@ -9,14 +11,14 @@ public class WelcomeScreen extends JPanel {
     private static final Dimension AppDimensions = new Dimension(800, 600);
     private final JButton newOrderButton = new JButton("New Order");
 
-    public WelcomeScreen(CardLayout mainCardLayout, JPanel mainCardPanel) {
+    public WelcomeScreen() {
         this.setLayout(new BorderLayout());
 
         layStoreIconLabel();
         layNewOrderButton();
 
         newOrderButton.addActionListener(e -> {
-            mainCardLayout.show(mainCardPanel, "OrderKiosk");
+            CardManager.showNextMainCard();
         });
     }
 
@@ -48,12 +50,10 @@ public class WelcomeScreen extends JPanel {
         frame.setTitle("The Bodega - Sandwiches");
         frame.setSize(AppDimensions);
 
-        CardLayout cardLayout = new CardLayout();
-        JPanel cardPanel = new JPanel(cardLayout);
-        cardPanel.add(new WelcomeScreen(cardLayout, cardPanel), "WelcomeScreen");
-        cardPanel.add(new Orderkiosk(cardLayout, cardPanel), "OrderKiosk");
+        CardManager.addToMainCardPanel(new WelcomeScreen(), "WelcomeScreen");
+        CardManager.addToMainCardPanel(new Orderkiosk(), "OrderKiosk");
 
-        frame.add(cardPanel);
+        frame.add(CardManager.mainCardPanel);
 
         frame.getContentPane().setBackground(Color.black); //testing, turn white for production
         frame.setResizable(false);

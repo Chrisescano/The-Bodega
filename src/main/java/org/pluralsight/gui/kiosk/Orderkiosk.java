@@ -1,5 +1,7 @@
-package org.pluralsight.gui.panel;
+package org.pluralsight.gui.kiosk;
 
+import org.pluralsight.gui.panel.SanwichMenuItems;
+import org.pluralsight.gui.util.CardManager;
 import org.pluralsight.gui.util.IconUtil;
 
 import javax.swing.*;
@@ -10,7 +12,7 @@ public class Orderkiosk extends JPanel {
     private final GridBagConstraints menuButtonConstraints;
     private final JPanel southernContainer;
 
-    public Orderkiosk(CardLayout mainCardLayout, JPanel mainCardPanel) {
+    public Orderkiosk() {
         this.setLayout(new BorderLayout());
         this.setBackground(Color.WHITE);
 
@@ -23,8 +25,7 @@ public class Orderkiosk extends JPanel {
         CardLayout menuCardLayout = new CardLayout();
         JPanel menuCardPanel = new JPanel(menuCardLayout);
 
-        //put back SandwichMenu when done testing
-        menuCardPanel.add(new JScrollPane(new SandwichItemPanel()), "SandwichMenu");
+        menuCardPanel.add(new JScrollPane(new SanwichMenuItems()), "SandwichMenu");
 
         //these buttons will stay for the duration of the program life cycle
         menuButtonConstraints = new GridBagConstraints();
@@ -46,7 +47,7 @@ public class Orderkiosk extends JPanel {
         this.add(menuCardPanel, BorderLayout.CENTER);
 
         cancelOrderButton.addActionListener(e -> {
-            mainCardLayout.show(mainCardPanel, "WelcomeScreen");
+            CardManager.showNextMainCard();
         });
     }
 

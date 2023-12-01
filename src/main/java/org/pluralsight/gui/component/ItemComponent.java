@@ -19,7 +19,7 @@ public class ItemComponent extends JPanel{
     public ItemComponent(String filePath, String nameOfItem, boolean enableSelected, String ... options) {
         this.setLayout(new GridBagLayout());
         this.setBackground(Color.white);
-        this.setPreferredSize(new Dimension(400, 120));
+        this.setPreferredSize(new Dimension(350, 120));
 
         icon = IconUtil.scale(filePath, 70, 70);
         itemLabel = new JLabel(nameOfItem, icon, SwingConstants.LEFT);

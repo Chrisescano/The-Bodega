@@ -8,9 +8,9 @@ import java.awt.*;
  * Parts Of The Logic Needed:
  * - different types of sandwiches
  */
-public class SanwichMenu extends JPanel {
+public class SanwichMenuItems extends JPanel {
     GridBagConstraints constraints;
-    public SanwichMenu() {
+    public SanwichMenuItems() {
         this.setLayout(new BorderLayout());
         this.setBackground(Color.WHITE);
 
