@@ -58,9 +58,67 @@ public class ToppingScreen implements Displayable {
 
     private void validateEdit(boolean isToAdd) {
         String prompt = isToAdd ? "Type In Topping To Add: " : "Type In Topping To Remove: ";
-        String userTopping = ScannerIO.getStringInput(prompt);
-        Topping toppingToEdit = toppingManager.getTopping(userTopping);
+        String userInput = ScannerIO.getStringInput(prompt);
+        Topping userTopping = toppingManager.getTopping(userInput);
 
+        //null check
+        if (userTopping == null) {
+            System.out.println("Oops, " + userInput + " Is Not A Valid Topping.");
+            return;
+        }
 
+        //topping check
+        boolean hasTopping = sandwichHasTopping(userTopping);
+
+        //if true add extra
+        if (isToAdd && hasTopping) {
+            if (userTopping.getType().equalsIgnoreCase("breads")) {
+                System.out.println("Cannot Have Extra Bread");
+                return;
+            }
+
+            boolean userWantsExtra = ScannerIO.getBooleanInput("You Already Have This Topping. Add Extra? (yes or no): ");
+            if (userWantsExtra) sandwich.addExtra(userTopping);
+        }
+
+        //add topping
+        if (isToAdd && !hasTopping) sandwich.addTopping(userTopping);
+
+        //remove topping
+        if (!isToAdd && hasTopping) {
+            if (userTopping.getType().equalsIgnoreCase("breads")) {
+                boolean changeBread = ScannerIO.getBooleanInput("We Don't Do Salads, Would You Like To Change Your Bread? ");
+                if (changeBread) changeBread();
+                return;
+            }
+
+            sandwich.removeTopping(userTopping);
+        }
+
+        //
+        if (!isToAdd && !hasTopping) System.out.println("Cannot Remove What is Not There. Discarding...");
+    }
+
+    private boolean sandwichHasTopping(Topping topping) {
+        for (Topping existingToppings : sandwich.getSandwichToppings()) {
+            if (topping.getName().equalsIgnoreCase(existingToppings.getName())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void changeBread() {
+        while (true) {
+            String userInput = ScannerIO.getStringInput("Type In Your Bread: ");
+            Topping userTopping = toppingManager.getTopping(userInput);
+
+            if (userTopping == null || !userTopping.getType().equalsIgnoreCase("breads")) {
+                System.out.println("Not A Bread Topping. Try Again");
+            } else {
+                sandwich.getSandwichToppings().set(0, userTopping);
+                return;
+            }
+        }
     }
 }

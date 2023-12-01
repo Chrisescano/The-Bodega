@@ -21,6 +21,7 @@ public class ScannerIO {
                 return userInput;
             } catch (InputMismatchException e) {
                 System.out.println("Oops, Expecting An Integer Input. Try Again");
+                scanner.nextLine();
             }
         }
     }

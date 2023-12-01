@@ -41,6 +41,14 @@ public class Sandwich extends Item {
        }
     }
 
+    public void addExtra(Topping topping) {
+        for (Topping included : sandwichToppings) {
+            if (included.getName().equalsIgnoreCase(topping.getName())) {
+                included.setExtraOrdered(true);
+            }
+        }
+    }
+
     /*-----Getters-----*/
     public boolean isToasted() {
         return isToasted;
