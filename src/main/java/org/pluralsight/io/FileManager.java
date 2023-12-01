@@ -30,6 +30,7 @@ public class FileManager {
         try {
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(filePath + fileName));
             bufferedWriter.write(fileContents);
+            bufferedWriter.flush();
             bufferedWriter.close();
         } catch (IOException e) {
             System.out.printf("Oops could not write to File:%s",filePath);

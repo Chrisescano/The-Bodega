@@ -25,7 +25,7 @@ public class CheckoutScreen implements Displayable{
         screen();
 
         boolean saveOrder = ScannerIO.getBooleanInput(
-                "Type In Confirm If Everything Looks Ok OR Cancel To Go Back To The Home Screen");
+                "Type In Confirm If Everything Looks Ok OR Cancel To Go Back To The Home Screen: ");
         if (saveOrder) order.save();
     }
 }

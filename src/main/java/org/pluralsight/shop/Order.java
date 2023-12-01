@@ -22,7 +22,7 @@ public class Order {
         price = 0;
         format = new TerminalFormat();
         orderBuilder = new StringBuilder();
-
+        receipt = new Receipt();
     }
 
     public void addSandwich(Sandwich sandwich) {
@@ -38,8 +38,6 @@ public class Order {
     }
 
     public void printOrder() {
-        receipt = new Receipt();
-
         orderBuilder.append(format.divider());
         orderBuilder.append("\n");
         for (Item item : items) {

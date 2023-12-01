@@ -14,6 +14,7 @@ public class Receipt {
     private LocalDateTime timeStamp;
     private final DateTimeFormatter receiptFormat;
     private final DateTimeFormatter fileFormat;
+    FileManager fileManager;
 
     public Receipt() {
         receiptHeader = new StringBuilder();
@@ -25,6 +26,8 @@ public class Receipt {
         receiptBody.append(format.divider()).append("\n");
         receiptBody.append(format.tableRow("ITEM","PRICE", "between")).append("\n");
         receiptBody.append(format.tableRow("----", "-----", "between")).append("\n");
+
+        fileManager = new FileManager("Receipts/");
     }
 
     public void appendToReceipt(String contents) {
@@ -34,10 +37,9 @@ public class Receipt {
     public void save() {
         init();
         buildReceiptHeader();
-
-        FileManager fileManager = new FileManager("Receipts/");
         String receipt = receiptHeader + receiptBody.toString();
-        fileManager.writeToFile(timeStamp.format(fileFormat) + ".txt", receipt);
+        String fileName = timeStamp.format(fileFormat) + ".txt";
+        fileManager.writeToFile(fileName, receipt);
     }
 
     /*-----Private Methods-----*/
