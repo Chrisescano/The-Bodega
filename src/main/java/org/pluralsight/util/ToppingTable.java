@@ -101,6 +101,6 @@ public class ToppingTable implements Displayable {
 
     @Override
     public void run() {
-        System.out.println(toppingTableBuilder);
+        System.out.print(toppingTableBuilder);
     }
 }

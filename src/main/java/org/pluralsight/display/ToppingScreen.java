@@ -24,7 +24,7 @@ public class ToppingScreen implements Displayable {
 
     @Override
     public void screen() {
-        System.out.println("""
+        System.out.print("""
                 
                 Here Is A Menu Of All The Toppings
                 """);
@@ -39,13 +39,13 @@ public class ToppingScreen implements Displayable {
 
     private void printUserOptions() {
         while (true) {
-            System.out.println("""
+            System.out.print("""
+                            
                             To Edit Your Sandwich:
                               (1) - Add A Topping
                               (2) - Remove A Topping
                               (3) - Exit
-                            """
-            );
+                            """);
             int userCommand = ScannerIO.getIntInput("Type In Your Command: ");
             switch (userCommand) {
                 case 1 -> validateEdit(true);
@@ -95,13 +95,14 @@ public class ToppingScreen implements Displayable {
             if (userTopping.getType().equalsIgnoreCase("breads")) {
                 boolean changeBread = ScannerIO.getBooleanInput("We Don't Do Salads, Would You Like To Change Your Bread? ");
                 if (changeBread) changeBread();
+                System.out.println();
                 return;
             }
 
             sandwich.removeTopping(userTopping);
         }
 
-        //
+        //remove when not available
         if (!isToAdd && !hasTopping) System.out.println("Cannot Remove What is Not There. Discarding...");
     }
 

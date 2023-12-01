@@ -6,7 +6,7 @@ public class HomeScreen implements Displayable {
     @Override
     public void screen() {
         System.out.print("""
-                Welcome To The Bodega Sandwich Shop!
+                Welcome To The Bodega Cat Subs!
                 Would You Like To:
                   (1) - Make A New Order
                   (0) - Quit The Program

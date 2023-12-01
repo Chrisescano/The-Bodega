@@ -4,6 +4,7 @@ import org.pluralsight.io.ScannerIO;
 import org.pluralsight.menuItems.ItemManager;
 import org.pluralsight.menuItems.Sandwich;
 import org.pluralsight.shop.Order;
+import org.pluralsight.shop.Size;
 import org.pluralsight.topping.Topping;
 import org.pluralsight.util.MenuTable;
 
@@ -43,6 +44,11 @@ public class SandwichScreen implements Displayable{
             ToppingScreen toppingScreen = new ToppingScreen(order, sandwich);
             toppingScreen.run();
         }
+
+        boolean userToasted = ScannerIO.getBooleanInput("\nWould You Like To Toast Your Sandwich? (yes or no): ");
+        sandwich.setToasted(userToasted);
+
+        System.out.println("Order Saved");
         order.addSandwich(sandwich);
     }
 
@@ -56,6 +62,24 @@ public class SandwichScreen implements Displayable{
                 return;
             } else {
                 System.out.println("Oops, That Is Not A Correct Sandwich. Please Try Again");
+            }
+        }
+    }
+
+    private void changeSandwichSize() {
+        boolean userChangeSize = ScannerIO.getBooleanInput("Currently Your Sandwich Is " +
+                sandwich.getSize().getBreadSize() + " Would You Like To Change Size? (yes or no): ");
+
+        if (userChangeSize) {
+            while (true) {
+                String userSize = ScannerIO.getStringInput("\nType In [Small] OR [Medium] OR [Large] To Change Size: ").toUpperCase();
+                switch (userSize) {
+                    case "SMALL", "MEDIUM", "LARGE" -> {
+                        sandwich.setSize(Size.valueOf(userSize));
+                        return;
+                    }
+                    default -> System.out.println("Oops, " + userSize + " Is Not A Valid Size. Please Try Again");
+                }
             }
         }
     }
