@@ -36,6 +36,8 @@ public class SandwichScreen implements Displayable{
         screen();
         validateSandwich();
 
+        changeSandwichSize();
+
         System.out.println("\nA " + sandwich.getName() + " Has The Following Toppings:");
         System.out.println(sandwich.toString());
 
@@ -48,7 +50,6 @@ public class SandwichScreen implements Displayable{
         boolean userToasted = ScannerIO.getBooleanInput("\nWould You Like To Toast Your Sandwich? (yes or no): ");
         sandwich.setToasted(userToasted);
 
-        System.out.println("Order Saved");
         order.addSandwich(sandwich);
     }
 
