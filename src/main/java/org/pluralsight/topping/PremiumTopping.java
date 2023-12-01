@@ -27,4 +27,9 @@ public class PremiumTopping extends Topping {
         return extraOrdered ? toppingPrice.get(size) + premiumPrice.get(size) :
                 toppingPrice.get(size);
     }
+
+    @Override
+    public String getName() {
+        return extraOrdered ? toppingName + " (Extra)" : toppingName;
+    }
 }

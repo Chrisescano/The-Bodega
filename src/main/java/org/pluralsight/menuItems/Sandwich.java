@@ -4,6 +4,7 @@ import org.pluralsight.shop.Size;
 import org.pluralsight.topping.RegularTopping;
 import org.pluralsight.topping.Topping;
 import org.pluralsight.topping.ToppingManager;
+import org.pluralsight.util.TerminalFormat;
 
 import java.util.ArrayList;
 
@@ -16,9 +17,7 @@ public class Sandwich extends Item {
         super(itemInformation);
         toppingManager = new ToppingManager();
         sandwichToppings = new ArrayList<>();
-
         itemName = itemTokens[0];
-        price = Double.parseDouble(itemTokens[1]);
         size = Size.valueOf(itemTokens[2].toUpperCase());
         isToasted = itemTokens[3].equalsIgnoreCase("toasted");
 
@@ -29,16 +28,10 @@ public class Sandwich extends Item {
 
     public void addTopping(Topping topping) {
         sandwichToppings.add(topping);
-        price += topping.getPrice(size);
     }
 
     public void removeTopping(Topping topping) {
-       for (Topping included : sandwichToppings) {
-           if (included.getName().equalsIgnoreCase(topping.getName())) {
-               sandwichToppings.remove(included);
-               price -= topping.getPrice(size);
-           }
-       }
+        sandwichToppings.removeIf(included -> included.getName().equalsIgnoreCase(topping.getName()));
     }
 
     public void addExtra(Topping topping) {
@@ -70,6 +63,9 @@ public class Sandwich extends Item {
 
     @Override
     public double getPrice() {
+        for (Topping topping : sandwichToppings) {
+            price += topping.getPrice(size);
+        }
         return price;
     }
 
@@ -85,7 +81,22 @@ public class Sandwich extends Item {
 
     @Override
     public String print() {
-        return null;
+        StringBuilder sandwichBuilder = new StringBuilder();
+        TerminalFormat terminalFormat = new TerminalFormat();
+
+
+
+        sandwichBuilder.append(terminalFormat.tableRow(
+                itemName, String.valueOf(getPrice()), "between"
+        )).append("\n");
+
+        for (Topping topping : sandwichToppings) {
+            sandwichBuilder.append(terminalFormat.tableRow(
+                   "  " + topping.getName(), String.valueOf(topping.getPrice(size)), "between"
+            )).append("\n");
+        }
+
+        return sandwichBuilder.toString();
     }
 
     @Override

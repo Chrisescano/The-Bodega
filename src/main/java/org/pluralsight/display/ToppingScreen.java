@@ -82,7 +82,13 @@ public class ToppingScreen implements Displayable {
         }
 
         //add topping
-        if (isToAdd && !hasTopping) sandwich.addTopping(userTopping);
+        if (isToAdd && !hasTopping) {
+            if (userTopping.getType().equalsIgnoreCase("breads")) {
+                System.out.println("Cannot Have More Than One Bread");
+                return;
+            }
+            sandwich.addTopping(userTopping);
+        }
 
         //remove topping
         if (!isToAdd && hasTopping) {

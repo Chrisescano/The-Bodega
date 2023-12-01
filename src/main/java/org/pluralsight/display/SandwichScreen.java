@@ -43,6 +43,7 @@ public class SandwichScreen implements Displayable{
             ToppingScreen toppingScreen = new ToppingScreen(order, sandwich);
             toppingScreen.run();
         }
+        order.addSandwich(sandwich);
     }
 
     /*-----Private Methods-----*/

@@ -16,4 +16,9 @@ public class RegularTopping extends Topping {
     public double getPrice(Size size) {
         return toppingPrice.get(size);
     }
+
+    @Override
+    public String getName() {
+        return extraOrdered ? toppingName + " (Extra)" : toppingName;
+    }
 }

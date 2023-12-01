@@ -1,6 +1,7 @@
 package org.pluralsight.menuItems;
 
 import org.pluralsight.shop.Size;
+import org.pluralsight.util.TerminalFormat;
 
 import java.util.HashMap;
 
@@ -39,7 +40,11 @@ public class Chip extends Item {
 
     @Override
     public String print() {
-        return null;
+        TerminalFormat terminalFormat = new TerminalFormat();
+
+        return terminalFormat.tableRow(
+                itemName, String.valueOf(getPrice(size)), "between"
+        ) + "\n";
     }
 
     @Override

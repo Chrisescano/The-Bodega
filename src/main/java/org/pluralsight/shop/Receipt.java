@@ -23,22 +23,12 @@ public class Receipt {
         fileFormat = DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss"); //remove ss for testing purposes
 
         receiptBody.append(format.divider()).append("\n");
-        receiptBody.append(format.tableRow("QTY ITEM","PRICE", "between")).append("\n");
-        receiptBody.append(format.tableRow("--- ----", "-----", "between")).append("\n");
+        receiptBody.append(format.tableRow("ITEM","PRICE", "between")).append("\n");
+        receiptBody.append(format.tableRow("----", "-----", "between")).append("\n");
     }
 
-    public void addLine(String quantity, String item, String price) {
-        receiptBody.append(format.tableRow(
-                " ".repeat(3 - quantity.length()) + quantity + " " + item,
-                price, "between")).append("\n");
-    }
-
-    public void addLine(String item, String price) {
-        receiptBody.append(format.tableRow("    " + item, price, "between")).append("\n");
-    }
-
-    public void addDivider() {
-        receiptBody.append(format.divider()).append("\n");
+    public void appendToReceipt(String contents) {
+        receiptBody.append(contents);
     }
 
     public void save() {

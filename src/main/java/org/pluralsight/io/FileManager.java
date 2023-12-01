@@ -27,11 +27,8 @@ public class FileManager {
     }
 
     public void writeToFile(String fileName, String fileContents) {
-        File file = new File(filePath + fileName);
-
         try {
-            file.createNewFile();
-            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(filePath + fileName));
             bufferedWriter.write(fileContents);
             bufferedWriter.close();
         } catch (IOException e) {

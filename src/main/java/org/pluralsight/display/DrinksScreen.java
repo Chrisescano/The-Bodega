@@ -46,7 +46,7 @@ public class DrinksScreen implements Displayable {
                 while (true) {
                     String userDrinkSize = ScannerIO.getStringInput("Type In The Size Of Your Drink: ").toUpperCase();
                     switch (userDrinkSize) {
-                        case "SMALL", "MEDIUM", "HARD" -> {
+                        case "SMALL", "MEDIUM", "LARGE" -> {
                             drink.setSize(Size.valueOf(userDrinkSize));
                             order.addDrink(drink);
                             return;
