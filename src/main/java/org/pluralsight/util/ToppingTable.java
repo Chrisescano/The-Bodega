@@ -11,7 +11,6 @@ public class ToppingTable implements Displayable {
     TerminalFormat tableHeader;
     TerminalFormat tableBodySections;
     StringBuilder toppingTableBuilder;
-    int uniqueToppings;
 
     public ToppingTable() {
         ToppingManager toppingManager = new ToppingManager();
@@ -20,7 +19,6 @@ public class ToppingTable implements Displayable {
         toppingTableBuilder = new StringBuilder();
 
         int maxWidth = findMaxWidth(toppingManager.getToppingList());
-        uniqueToppings = toppingManager.getUniqueToppings();
         tableHeader.setWidth(maxWidth * 4 + 9);
         tableBodySections.setWidth(maxWidth);
 

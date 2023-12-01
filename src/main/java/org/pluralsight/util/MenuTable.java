@@ -1,143 +1,103 @@
 package org.pluralsight.util;
 
 import org.pluralsight.display.Displayable;
-import org.pluralsight.menuItems.Chip;
-import org.pluralsight.menuItems.Drink;
-import org.pluralsight.menuItems.ItemManager;
-import org.pluralsight.menuItems.Sandwich;
+import org.pluralsight.menuItems.*;
 import org.pluralsight.shop.Size;
 
 import java.util.ArrayList;
 
 public class MenuTable implements Displayable {
-    private final ArrayList<String> sandwiches;
-    private final ArrayList<String> chips;
-    private final ArrayList<String> drinks;
     private final StringBuilder menuTableBuilder;
-    private final TerminalFormat tableHeader = new TerminalFormat();
-    private final TerminalFormat sandwichSection = new TerminalFormat();
-    private final TerminalFormat drinkSection = new TerminalFormat();
-    private final TerminalFormat chipSection = new TerminalFormat();
+    private final ArrayList<String> menuItems;
+    private final TerminalFormat menuTableFormatter;
 
-    public MenuTable() {
+    public MenuTable(String menuType) {
         ItemManager itemManager = new ItemManager();
-        sandwiches = itemManager.getItemsByType("sandwiches");
-        chips = itemManager.getItemsByType("chips");
-        drinks = itemManager.getItemsByType("drinks");
+
+        menuItems = itemManager.getItemsByType(menuType);
+        menuTableFormatter = new TerminalFormat();
         menuTableBuilder = new StringBuilder();
 
-        //calculated lengths to fit table
-        tableHeader.setWidth(91);
-        sandwichSection.setWidth(25);
-        drinkSection.setWidth(32);
-        chipSection.setWidth(32);
+        //calculated lengths to fit table - 91 -> san25, dri32, chi32
 
-        int max = Math.max(Math.max(drinks.size(), chips.size()), sandwiches.size());
+        createHeader(menuType);
+        menuTableBuilder.append(menuTableFormatter.divider());
+        menuTableBuilder.append("\n");
 
-        createHeader();
-        createBodyDivider();
-        createBodyTitle();
-        for (int i = 0; i < max; i++) {
-            createBodyRow(i);
+        switch (menuType) {
+            case "sandwiches" -> createTitle();
+            case "drinks", "chips" -> createTitleForSizes();
         }
-        createBodyDivider();
+
+        for (String itemInfo : menuItems) {
+            switch (menuType) {
+                case "sandwiches" -> createSandwichRow(itemInfo);
+                case "drinks" -> createDrinkRow(itemInfo);
+                case "chips" -> createChipRow(itemInfo);
+            }
+        }
+
+        menuTableBuilder.append(menuTableFormatter.divider());
+        menuTableBuilder.append("\n");
+    }
+
+    public static void main(String[] args) {
+        MenuTable table = new MenuTable("chips");
+        table.run();
     }
 
     /*-----Private Methods-----*/
-    private void createHeader() {
-        menuTableBuilder.append(tableHeader.divider());
+    private void createHeader(String item) {
+        menuTableBuilder.append(menuTableFormatter.divider());
         menuTableBuilder.append("\n");
-        menuTableBuilder.append(tableHeader.tableRow("Menu Options", "center"));
-        menuTableBuilder.append("\n");
-    }
-
-    private void createBodyDivider() {
-        String sandwichDivider = sandwichSection.divider();
-        String chipDivider = chipSection.divider();
-        sandwichDivider = sandwichDivider.substring(0, sandwichDivider.length() - 3);
-        chipDivider = chipDivider.substring(3);
-
-        menuTableBuilder.append(sandwichDivider);
-        menuTableBuilder.append(drinkSection.divider());
-        menuTableBuilder.append(chipDivider);
+        menuTableBuilder.append(menuTableFormatter.tableRow(item, "center"));
         menuTableBuilder.append("\n");
     }
 
-    private void createBodyTitle() {
-        String sandwichTitle = sandwichSection.tableRow("Price   ", "left");
-        String drinksTitle = drinkSection.tableRow(String.format(
-                "%s     %s     %s  ", "S", "M", "L"
-        ), "left");
-        String chipsTitle = chipSection.tableRow(String.format(
-                "%s     %s     %s  ", "S", "M", "L"
-        ), "left");
-
-
-        sandwichTitle = sandwichTitle.substring(0, sandwichTitle.length() - 3);
-        chipsTitle = chipsTitle.substring(3);
-
-        menuTableBuilder.append(sandwichTitle);
-        menuTableBuilder.append(drinksTitle);
-        menuTableBuilder.append(chipsTitle);
+    private void createTitle() {
+        menuTableBuilder.append(menuTableFormatter.tableRow("Price", "left"));
         menuTableBuilder.append("\n");
     }
 
-    private void createBodyRow(int row) {
-        createSandwichSectionRow(row);
-        createDrinkSectionRow(row);
-        createChipSection(row);
+    private void createTitleForSizes() {
+        menuTableBuilder.append(menuTableFormatter.tableRow("S     M     L  ", "left"));
         menuTableBuilder.append("\n");
     }
 
-    /*-----Helper Methods-----*/
-
-    private void createSandwichSectionRow(int row) {
-        String sandwichInfo = null;
-        try {
-            Sandwich sandwich = new Sandwich(sandwiches.get(row));
-            sandwichInfo = sandwichSection.tableRow(String.format(
-                    "%-16.16s $%4.2f", sandwich.getName(), sandwich.getPrice()), "right"
-            );
-        } catch (IndexOutOfBoundsException e) {
-            sandwichInfo = sandwichSection.tableRow();
-        }
-        sandwichInfo = sandwichInfo.substring(0, sandwichInfo.length() - 3);
-        menuTableBuilder.append(sandwichInfo);
+    private void createSandwichRow(String itemInfo) {
+        Sandwich sandwich = new Sandwich(itemInfo);
+        menuTableBuilder.append(menuTableFormatter.tableRow(
+                sandwich.getName(),
+                String.format("$%4.2f", sandwich.getPrice()),
+                "between"
+        ));
+        menuTableBuilder.append("\n");
     }
 
-    private void createDrinkSectionRow(int row) {
-        try {
-            Drink drink = new Drink(drinks.get(row));
-            menuTableBuilder.append(drinkSection.tableRow(
-                    String.format("%-14.14s $%4.2f $%4.2f $%4.2f",
-                            drink.getName(),
-                            drink.getPrice(Size.SMALL),
-                            drink.getPrice(Size.MEDIUM),
-                            drink.getPrice(Size.LARGE)),
-                    "right"
-            ));
-        } catch (IndexOutOfBoundsException e) {
-            menuTableBuilder.append(drinkSection.tableRow());
-        }
+    private void createDrinkRow(String itemInfo) {
+        Drink drink = new Drink(itemInfo);
+        menuTableBuilder.append(menuTableFormatter.tableRow(
+                drink.getName(), String.format(
+                        "$%4.2f $%4.2f $%4.2f",
+                        drink.getPrice(Size.SMALL),
+                        drink.getPrice(Size.MEDIUM),
+                        drink.getPrice(Size.LARGE)
+                ), "between"
+        ));
+        menuTableBuilder.append("\n");
     }
 
-    private void createChipSection(int row) {
-        String chipInfo = null;
-        try {
-            Chip chip = new Chip(chips.get(row));
-            chipInfo = drinkSection.tableRow(
-                    String.format("%-12.12s $%4.2f $%4.2f $%4.2f",
-                            chip.getName(),
-                            chip.getPrice(Size.SMALL),
-                            chip.getPrice(Size.MEDIUM),
-                            chip.getPrice(Size.LARGE)),
-                    "left"
-            );
-        } catch (IndexOutOfBoundsException e) {
-            chipInfo = chipSection.tableRow();
-        }
-        chipInfo = chipInfo.substring(3);
-        menuTableBuilder.append(chipInfo);
+    private void createChipRow(String itemInfo) {
+        Chip chip = new Chip(itemInfo);
+        menuTableBuilder.append(menuTableFormatter.tableRow(
+                chip.getName(), String.format(
+                        "$%4.2f $%4.2f $%4.2f",
+                        chip.getPrice(Size.SMALL),
+                        chip.getPrice(Size.MEDIUM),
+                        chip.getPrice(Size.LARGE)
+                ), "between"
+        ));
+        menuTableBuilder.append("\n");
     }
 
     @Override

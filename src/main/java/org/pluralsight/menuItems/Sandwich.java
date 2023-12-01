@@ -1,6 +1,7 @@
 package org.pluralsight.menuItems;
 
 import org.pluralsight.shop.Size;
+import org.pluralsight.topping.RegularTopping;
 import org.pluralsight.topping.Topping;
 import org.pluralsight.topping.ToppingManager;
 
@@ -26,21 +27,18 @@ public class Sandwich extends Item {
         }
     }
 
-    public void addTopping(String toppingName) {
-        Topping topping;
-        if ((topping = toppingManager.getTopping(toppingName)) != null) {
-            sandwichToppings.add(topping);
-            price += topping.getPrice(size);
-        }
+    public void addTopping(Topping topping) {
+        sandwichToppings.add(topping);
+        price += topping.getPrice(size);
     }
 
-    public void removeTopping(String toppingName) {
-        for (Topping topping : sandwichToppings) {
-            if (topping.getName().equalsIgnoreCase(toppingName)) {
-                sandwichToppings.remove(topping);
-                price -= topping.getPrice(size);
-            }
-        }
+    public void removeTopping(Topping topping) {
+       for (Topping included : sandwichToppings) {
+           if (included.getName().equalsIgnoreCase(topping.getName())) {
+               sandwichToppings.remove(included);
+               price -= topping.getPrice(size);
+           }
+       }
     }
 
     /*-----Getters-----*/
@@ -75,5 +73,14 @@ public class Sandwich extends Item {
     @Override
     public Size getSize() {
         return size;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder toppingBuilder = new StringBuilder();
+        for (Topping topping : sandwichToppings) {
+            toppingBuilder.append("[ ").append(topping.getName()).append(" ]");
+        }
+        return toppingBuilder.toString();
     }
 }

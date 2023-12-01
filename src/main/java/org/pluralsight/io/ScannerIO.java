@@ -1,5 +1,6 @@
 package org.pluralsight.io;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ScannerIO {
@@ -18,7 +19,7 @@ public class ScannerIO {
                 int userInput = scanner.nextInt();
                 scanner.nextLine(); //clear buffer
                 return userInput;
-            } catch (IllegalArgumentException e) {
+            } catch (InputMismatchException e) {
                 System.out.println("Oops, Expecting An Integer Input. Try Again");
             }
         }
